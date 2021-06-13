@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 100
   companyName: Bogdanum
-  productName: Most Expensive Space Game
+  productName: Space Game 3D
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0, g: 0, b: 0, a: 1}
@@ -126,7 +126,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: alpha 0.2
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -172,7 +172,7 @@ PlayerSettings:
   applicationIdentifier: {}
   buildNumber:
     Standalone: 0.9.4
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
@@ -249,8 +249,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{inproject}: MostExpSpaceGame.keystore'
-  AndroidKeyaliasName: mostexpspacegame
+  AndroidKeystoreName: '{inproject}: SpaceGame3D.keystore'
+  AndroidKeyaliasName: spacegame3d
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
@@ -269,7 +269,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: ead71bec6466f4535bfb648ac7a3c0e6, type: 3}
+      m_Icon: {fileID: 2800000, guid: bf344311c879a4746a64102e7c5cd752, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
@@ -865,10 +865,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 57d05bc2-a057-4847-bdb9-3eb2f4a7e506
+  cloudProjectId: 2b658669-dc59-465a-88f2-b5b6b0544a21
   framebufferDepthMemorylessMode: 0
   projectName: Space Game 3D
-  organizationId: bogdanum
+  organizationId: bbbxololeenko
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
