@@ -39,8 +39,8 @@ public class Translator : MonoBehaviour
             "Name",
             "Score",
             "Asteroids",
-            "Show my positon"
-
+            "Show my positon",
+            "Name is prohibited!"
         },
         #endregion
 
@@ -71,7 +71,8 @@ public class Translator : MonoBehaviour
             "Имя",
             "Счет",
             "Астероиды",
-            "Моя позиция"
+            "Моя позиция",
+            "Имя запрещено!"
         },
         #endregion
 
@@ -102,7 +103,8 @@ public class Translator : MonoBehaviour
             "选手姓名",
             "结果",
             "小行星",
-            "我的位置"
+            "我的位置",
+            "名字被禁止!"
         },
         #endregion
 
@@ -133,7 +135,8 @@ public class Translator : MonoBehaviour
             "Name",
             "Ergebnis",
             "Asteroiden",
-            "Meine Position"
+            "Meine Position",
+            "Name ist verboten!"
         },
         #endregion
 
@@ -164,7 +167,8 @@ public class Translator : MonoBehaviour
             "エイリアス",
             "スコア",
             "総小惑星",
-            "私の立場"
+            "私の立場",
+            "エイリアスは禁止されています!"
         },
         #endregion
 
@@ -195,7 +199,8 @@ public class Translator : MonoBehaviour
             "Surnom",
             "Score",
             "Astéroïdes",
-            "Ma position"
+            "Ma position",
+            "Le nom est interdit!"
         },
         #endregion
 
@@ -226,7 +231,8 @@ public class Translator : MonoBehaviour
             "Nome",
             "Pontuações",
             "Asteróides",
-            "Minha posição"
+            "Minha posição",
+            "O nome é proibido!"
         },
         #endregion
 
@@ -257,7 +263,8 @@ public class Translator : MonoBehaviour
             "Nombre",
             "Puntaje",
             "Asteroides",
-            "Mi posición"
+            "Mi posición",
+            "Nombre prohibido!"
         },
         #endregion
 
@@ -288,7 +295,8 @@ public class Translator : MonoBehaviour
             "Takma ad",
             "Puan",
             "Asteroitler",
-            "Pozisyonum"
+            "Pozisyonum",
+            "İsim yasak!"
         },
         #endregion
 
@@ -319,7 +327,8 @@ public class Translator : MonoBehaviour
             "Ім'я",
             "Рахунок",
             "Астероїди",
-            "Моя позиція"
+            "Моя позиція",
+            "Ім'я заборонено!"
         },
         #endregion
 

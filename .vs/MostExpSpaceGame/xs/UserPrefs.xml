@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{CE6E1712-ED91-463C-15E6-6B60CC4974A2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Localization/Scripts/Translator.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Localization/Scripts/Translator.cs" Line="331" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="6dfa6376-8872-4f9d-b1fb-3c35bee39732" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
