@@ -54,6 +54,8 @@ public class PlayFabManager : MonoBehaviour
 
             #endregion
 
+            public Text position;
+            [Space(20)]public GameObject ControlBlockPanel;
     #endregion
 
     #region Other
@@ -69,6 +71,7 @@ public class PlayFabManager : MonoBehaviour
 
     void Start()
     {
+        ControlBlockPanel.SetActive(true);
         Login();
     }
 
@@ -94,7 +97,7 @@ public class PlayFabManager : MonoBehaviour
             Debug.Log("Successful login/accaunt create!");
             if (result.InfoResultPayload.PlayerProfile != null)
             {
-                name = result.InfoResultPayload.PlayerProfile.DisplayName;
+                //name = result.InfoResultPayload.PlayerProfile.DisplayName;
                 nameMenu.text = result.InfoResultPayload.PlayerProfile.DisplayName;
             }
             else
@@ -104,7 +107,7 @@ public class PlayFabManager : MonoBehaviour
             }
             GetFuckingBestScore();
             GetFuckingBestAster();
-
+            ControlBlockPanel.SetActive(false);
         }
 
         void OnError(PlayFabError error)
@@ -163,7 +166,7 @@ public class PlayFabManager : MonoBehaviour
             {
                 StatisticName = ScoreLBname,               
                 StartPosition = 0,
-                MaxResultsCount = playersCountAll                     
+                MaxResultsCount = playersCountAll,
             };
             PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnError);
         }
@@ -191,7 +194,8 @@ public class PlayFabManager : MonoBehaviour
                         texts[1].color = playerColor;
                         texts[2].color = playerColor;
                     }
-            }
+                    
+                }
 
         }
 
@@ -396,7 +400,8 @@ public class PlayFabManager : MonoBehaviour
                 {
                     PlayerPrefs.SetInt(BestScoreKey, item.StatValue);
                     GameController.instance.bestscore = PlayerPrefs.GetInt(BestScoreKey);
-                }
+                    position.text = (item.Position + 1).ToString();
+            }
             }
         }
         void GetFuckingBestAster()
@@ -419,7 +424,7 @@ public class PlayFabManager : MonoBehaviour
                 if (item.PlayFabId == loggedInPlayfabId)
                 {
                     PlayerPrefs.SetInt(BestScoreKey, item.StatValue);
-                   GameController.instance.destrAster = PlayerPrefs.GetInt(BestScoreKey);
+                    GameController.instance.destrAster = PlayerPrefs.GetInt(BestScoreKey);
                 }
             }
         }

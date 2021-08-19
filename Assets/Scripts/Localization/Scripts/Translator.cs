@@ -40,7 +40,11 @@ public class Translator : MonoBehaviour
             "Score",
             "Asteroids",
             "Show my positon",
-            "Name is prohibited!"
+            "Name is prohibited!",
+            "Loading data...",
+            "Check your internet access",
+            "Friends",
+            "Enter friend name..."
         },
         #endregion
 
@@ -72,7 +76,11 @@ public class Translator : MonoBehaviour
             "Счет",
             "Астероиды",
             "Моя позиция",
-            "Имя запрещено!"
+            "Имя запрещено!",
+            "Загрузка данных...",
+            "Проверьте ваше интернет-соединение",
+            "Друзья",
+            "Введите имя друга..."
         },
         #endregion
 
@@ -104,7 +112,11 @@ public class Translator : MonoBehaviour
             "结果",
             "小行星",
             "我的位置",
-            "名字被禁止!"
+            "名字被禁止!",
+            "加载数据中...",
+            "检查您的互联网访问",
+            "朋友们",
+            "输入好友名称..."
         },
         #endregion
 
@@ -136,7 +148,11 @@ public class Translator : MonoBehaviour
             "Ergebnis",
             "Asteroiden",
             "Meine Position",
-            "Name ist verboten!"
+            "Name ist verboten!",
+            "Lade Daten...",
+            "Überprüfen Sie Ihren Internetzugang",
+            "Freunde",
+            "Gib den Namen deines Freundes ein..."
         },
         #endregion
 
@@ -168,7 +184,11 @@ public class Translator : MonoBehaviour
             "スコア",
             "総小惑星",
             "私の立場",
-            "エイリアスは禁止されています!"
+            "エイリアスは禁止されています!",
+            "データのロード...",
+            "インターネットアクセスを確認する",
+            "フレンズ",
+            "友達の名前を入力してください..."
         },
         #endregion
 
@@ -200,7 +220,11 @@ public class Translator : MonoBehaviour
             "Score",
             "Astéroïdes",
             "Ma position",
-            "Le nom est interdit!"
+            "Le nom est interdit!",
+            "Chargement des données...",
+            "Vérifiez votre connection internet",
+            "Amis",
+            "Entrez le nom de votre ami..."
         },
         #endregion
 
@@ -232,7 +256,11 @@ public class Translator : MonoBehaviour
             "Pontuações",
             "Asteróides",
             "Minha posição",
-            "O nome é proibido!"
+            "O nome é proibido!",
+            "Carregando dados...",
+            "Verifique sua conexão com a internet",
+            "Amigos",
+            "Digite o nome do seu amigo..."
         },
         #endregion
 
@@ -264,7 +292,11 @@ public class Translator : MonoBehaviour
             "Puntaje",
             "Asteroides",
             "Mi posición",
-            "Nombre prohibido!"
+            "Nombre prohibido!",
+            "Cargando datos...",
+            "Comprueba tu conexión a Internet",
+            "Amigos",
+            "Ingrese el nombre de su amigo..."
         },
         #endregion
 
@@ -296,7 +328,11 @@ public class Translator : MonoBehaviour
             "Puan",
             "Asteroitler",
             "Pozisyonum",
-            "İsim yasak!"
+            "İsim yasak!",
+            "Veri yükleniyor...",
+            "İnternet bağlantınızı kontrol edin",
+            "Arkadaşlar",
+            "Arkadaşınızın adını girin..."
         },
         #endregion
 
@@ -328,7 +364,11 @@ public class Translator : MonoBehaviour
             "Рахунок",
             "Астероїди",
             "Моя позиція",
-            "Ім'я заборонено!"
+            "Ім'я заборонено!",
+            "Завантаження даних...",
+            "Перевірте ваше інтернет-з'єднання",
+            "Друзі",
+            "Введіть ім'я друга..."
         },
         #endregion
 

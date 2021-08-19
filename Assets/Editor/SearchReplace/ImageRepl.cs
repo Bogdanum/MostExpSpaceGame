@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using System;
 
 public class ImageRepl : EditorWindow
 {
@@ -32,11 +33,12 @@ public class ImageRepl : EditorWindow
 
     private Vector2 scrollPosition = Vector2.zero;
 
-    [MenuItem("Window/Image Replacement v2")]
+    [MenuItem("Bogdanum Tools/Sprite Replacement")]
     static void OpenWindow()
     {
-        ImageRepl window = (ImageRepl)GetWindow(typeof(ImageRepl));
-        window.minSize = new Vector2(580, 570);
+        ImageRepl window = (ImageRepl)GetWindow(typeof(ImageRepl), false, "IQ тест от деда Абдула");
+        window.maxSize = new Vector2(620, 570);
+        window.minSize = new Vector2(620, 570);
         window.Show();
     }
 
@@ -59,8 +61,7 @@ public class ImageRepl : EditorWindow
 
     void Initialize()
     {
-        //allGameObjectsOnScene = (GameObject[])FindObjectsOfType(typeof(GameObject));  // only active in scene
-        allGameObjectsOnScene = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));  // UISprite Error
+        allGameObjectsOnScene = (GameObject[])Resources.FindObjectsOfTypeAll(typeof(GameObject));
         gameObjectsWithImage = new GameObject[allGameObjectsOnScene.Length];
 
 
@@ -87,12 +88,12 @@ public class ImageRepl : EditorWindow
 
         texturesButtonsSection.x = 0;
         texturesButtonsSection.y = 0;
-        texturesButtonsSection.width = Screen.width - 60;
+        texturesButtonsSection.width = Screen.width - 100;
         texturesButtonsSection.height = Screen.height;
 
         changeTexture.x = texturesButtonsSection.width;
         changeTexture.y = 0;
-        changeTexture.width = 60;
+        changeTexture.width = 100;
         changeTexture.height = Screen.height;
 
         cell.x = 10;
@@ -112,11 +113,12 @@ public class ImageRepl : EditorWindow
     {
 
     GUILayout.BeginArea(texturesButtonsSection);
-        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(Screen.width - 60), GUILayout.Height(texturesButtonsSection.height));
+        scrollPosition = GUILayout.BeginScrollView(scrollPosition, false, true, GUILayout.Width(scrollView.width), GUILayout.Height(texturesButtonsSection.height));
 
         if (trigger && gridImages != null)
         {
-            selectedTexture = GUILayout.SelectionGrid(selectedTexture, gridImages, 3, GUILayout.Width(Screen.width - 80), GUILayout.Height(gridImages.Length/3*150));
+            selectedTexture = GUILayout.SelectionGrid(selectedTexture, gridImages, 3, GUILayout.Width(Screen.width - 120), GUILayout.Height(gridImages.Length/3*150));
+            Selection.activeGameObject = gameObjectsWithImage[selectedTexture];
         }
 
         GUILayout.EndScrollView();
@@ -124,11 +126,11 @@ public class ImageRepl : EditorWindow
 
     GUILayout.BeginArea(changeTexture);
 
-        replacementTexture = (Sprite)EditorGUILayout.ObjectField("", replacementTexture, typeof(Sprite), false);
+        replacementTexture = (Sprite)EditorGUILayout.ObjectField("", replacementTexture, typeof(Sprite), false, GUILayout.MinWidth(100), GUILayout.MinHeight(100));
 
-        //Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one / 2); // texture2d -> sprite
+        GUILayout.Space(10);
 
-        if (GUILayout.Button("Change", GUILayout.Width(60), GUILayout.Height(30)))
+        if (GUILayout.Button("Заменить", GUILayout.Width(100), GUILayout.Height(30)))
         {
             if (gameObjectsWithImage[selectedTexture].GetComponent<Image>() != null)
             {
@@ -141,8 +143,46 @@ public class ImageRepl : EditorWindow
             else { return; }
             trigger = false;
             FindObjects();
+    /*
+            FileStream fileStream = File.Open("Assets/CarouselGames/Resources/CurrentStore.txt", FileMode.Create);
+            StreamWriter output = new StreamWriter(fileStream);
+            output.Write("Huawei"); // enum с выбором в gui
+            output.Close();
+    */
+       }
+
+        GUILayout.Space(30);
+        GUILayout.Label(" Если в списке\n  отсутствует\n     нужный\n  вам спрайт,\n  нажмите на\n  кнопку ниже.");
+
+        if (GUILayout.Button(new GUIContent("Выбрать PNG и\nпреобразовать\nв sprite",
+        "Откроется окно, в котором вам нужно выбрать PNG файл. Если в вы столкнулись с проблемой и вам нужна помощь -> Бог поможет (или дед Абдул с ПР-73)."),
+        GUILayout.Width(100), GUILayout.Height(80)))
+        {
+            string path = EditorUtility.OpenFilePanel("Выберите png файл", Application.dataPath, "png");
+            if (path != null)
+            {
+                if (path.Contains("png"))
+                {
+                    path = path.Remove(0, path.IndexOf("Assets", StringComparison.InvariantCulture));
+                    AssetDatabase.Refresh();
+                    AssetDatabase.ImportAsset(path);
+                    TextureImporter textureImporter = AssetImporter.GetAtPath(path) as TextureImporter;
+                    if (textureImporter.textureType != TextureImporterType.Sprite)
+                    {
+                        textureImporter.textureType = TextureImporterType.Sprite;
+                        textureImporter.isReadable = true;
+                        AssetDatabase.WriteImportSettingsIfDirty(path);
+                        AssetDatabase.Refresh();
+                        EditorUtility.DisplayDialog("Complete!", "PNG преобразован в Sprite. Теперь вы можете выбрать его в списке.", "OK");
+                    }
+                    else
+                    {
+                        EditorUtility.DisplayDialog("Упс...", "Похоже выбранный вами файл уже является спрайтом. Выберите его в списке.", "Вернуться");
+                    }
+                    FindObjects();
+                }           
+            }
             
-           
         }
 
     GUILayout.EndArea();
@@ -154,43 +194,39 @@ public class ImageRepl : EditorWindow
         var count = -1;
         for (int g = 0; g < gridImages.Length; g++)
         {
-            var imageComponent = gameObjectsWithImage[g].GetComponent<Image>();
-            var spriteRendComponent = gameObjectsWithImage[g].GetComponent<SpriteRenderer>();
+                var imageComponent = gameObjectsWithImage[g].GetComponent<Image>();
+                var spriteRendComponent = gameObjectsWithImage[g].GetComponent<SpriteRenderer>();
 
-            if (imageComponent != null && imageComponent.sprite != null && imageComponent.sprite.name != "Background"
-                && imageComponent.sprite.name != "UISprite" && imageComponent.sprite.name != "Checkmark"
-                && imageComponent.sprite.name != "InputFieldBackground" && imageComponent.sprite.name != "UIMask"
-                && imageComponent.sprite.name != "DropdownArrow")
-            {
-                textures[g] = new Texture2D((int)imageComponent.sprite.textureRect.width,
-                                               (int)imageComponent.sprite.textureRect.height);
+                if (imageComponent != null
+                    && imageComponent.sprite != null
+                    && imageComponent.sprite.texture.isReadable)
+                {
+                    textures[g] = new Texture2D((int)imageComponent.sprite.textureRect.width,
+                                                   (int)imageComponent.sprite.textureRect.height);
 
-                var pixels = imageComponent.sprite.texture.GetPixels(
-                                                                (int)imageComponent.sprite.textureRect.x,
-                                                                (int)imageComponent.sprite.textureRect.y,
-                                                                (int)imageComponent.sprite.textureRect.width,
-                                                                (int)imageComponent.sprite.textureRect.height
-                                                             );
-                textures[g].SetPixels(pixels);
-                textures[g].Apply();
-                count++;
-                gridImages[count] = new GUIContent(textures[g], gameObjectsWithImage[g].name);
+                    var pixels = imageComponent.sprite.texture.GetPixels(
+                                                                    (int)imageComponent.sprite.textureRect.x,
+                                                                    (int)imageComponent.sprite.textureRect.y,
+                                                                    (int)imageComponent.sprite.textureRect.width,
+                                                                    (int)imageComponent.sprite.textureRect.height
+                                                                 );
+                    textures[g].SetPixels(pixels);
+                    textures[g].Apply();
+                    count++;
+                    gridImages[count] = new GUIContent(textures[g], gameObjectsWithImage[g].name);
 
-            }
-            else if (spriteRendComponent != null && spriteRendComponent.sprite.name != "None")
-            {
-                count++;
-                gridImages[count] = new GUIContent(AssetPreview.GetAssetPreview(gameObjectsWithImage[g]), gameObjectsWithImage[g].name);
-            }
-            else
-            {
-                count++;
-                gridImages[count] = new GUIContent(noneTexture, gameObjectsWithImage[g].name);
-                Debug.LogWarning("null sprite in object: " + gameObjectsWithImage[g].name);
-            }
-            
+                }
+                else if (spriteRendComponent != null && spriteRendComponent.sprite.name != "None")
+                {
+                    count++;
+                    gridImages[count] = new GUIContent(AssetPreview.GetAssetPreview(gameObjectsWithImage[g]), gameObjectsWithImage[g].name);
+                }
+                else
+                {
+                    count++;
+                    gridImages[count] = new GUIContent(noneTexture, gameObjectsWithImage[g].name);
+                }
         }
-        // gridImages = gridImages.Where(val => val != null).ToArray();
         Debug.LogWarning("gridImages length: " + gridImages.Length);
         trigger = true;
 

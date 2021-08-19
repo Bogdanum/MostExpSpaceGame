@@ -31,9 +31,9 @@ public class GameController : MonoBehaviour
     [HideInInspector] public string betstScoreMenuText;
     [HideInInspector] public string destrAsterText;
     [Header("Stats")]
-    [HideInInspector] public int score = 0;
-    [HideInInspector] public int bestscore;
-    [HideInInspector] public int destrAster;
+    [HideInInspector] public SecureInt score;
+    [HideInInspector] public SecureInt bestscore;
+    [HideInInspector] public SecureInt destrAster;
     [HideInInspector] public int diff;
     [Header("Triggers")]
     [HideInInspector] public bool Restart;
@@ -226,10 +226,9 @@ public class GameController : MonoBehaviour
         if (score > bestscore)
         {
             bestscore = score;
+            PlayerPrefs.SetInt("SaveScore", bestscore);
+            playFabManager.SendLeaderboard(bestscore);
         }
-        PlayerPrefs.SetInt("SaveScore", bestscore);
-        playFabManager.SendLeaderboard(bestscore);
-
     }
 
     public void DestrAster()
@@ -293,6 +292,11 @@ public class GameController : MonoBehaviour
     public void CloseVictScreen()
     {
         VictoryScreen.gameObject.SetActive(false);
+    }
+
+    public void ReloadScene(int index)
+    {
+        SceneManager.LoadScene(index);
     }
 
 }
