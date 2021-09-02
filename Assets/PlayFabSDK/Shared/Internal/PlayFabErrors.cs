@@ -517,6 +517,8 @@ namespace PlayFab
         SteamUserNotFound = 1513,
         ElasticSearchOperationFailed = 1514,
         NotImplemented = 1515,
+        PublisherNotFound = 1516,
+        PublisherDeleted = 1517,
         MatchmakingEntityInvalid = 2001,
         MatchmakingPlayerAttributesInvalid = 2002,
         MatchmakingQueueNotFound = 2016,
@@ -538,6 +540,8 @@ namespace PlayFab
         MatchmakingQueueLimitExceeded = 2057,
         MatchmakingRequestTypeMismatch = 2058,
         MatchmakingBadRequest = 2059,
+        PubSubFeatureNotEnabledForTitle = 2500,
+        PubSubTooManyRequests = 2501,
         TitleConfigNotFound = 3001,
         TitleConfigUpdateConflict = 3002,
         TitleConfigSerializationError = 3003,
@@ -639,7 +643,22 @@ namespace PlayFab
         AsyncExportNotFound = 10012,
         AsyncExportRateLimitExceeded = 10013,
         SnapshotNotFound = 11000,
-        InventoryApiNotImplemented = 12000
+        InventoryApiNotImplemented = 12000,
+        LobbyDoesNotExist = 13000,
+        LobbyRateLimitExceeded = 13001,
+        LobbyPlayerAlreadyJoined = 13002,
+        LobbyNotJoinable = 13003,
+        LobbyMemberCannotRejoin = 13004,
+        LobbyCurrentPlayersMoreThanMaxPlayers = 13005,
+        LobbyPlayerNotPresent = 13006,
+        LobbyBadRequest = 13007,
+        LobbyPlayerMaxLobbyLimitExceeded = 13008,
+        LobbyNewOwnerMustBeConnected = 13009,
+        LobbyCurrentOwnerStillConnected = 13010,
+        LobbyMemberIsNotOwner = 13011,
+        EventSamplingInvalidRatio = 14000,
+        EventSamplingInvalidEventName = 14001,
+        EventSamplingRatioNotFound = 14002
     }
 
     public class PlayFabError

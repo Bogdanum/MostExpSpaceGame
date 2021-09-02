@@ -105,11 +105,6 @@ namespace PlayFab
             PlayFabHttp.MakeApiCall("/Client/AddSharedGroupMembers", request, AuthType.LoginSession, resultCallback, errorCallback, customData, extraHeaders, context, callSettings);
         }
 
-        public static object GetPlayerProfile(GetPlayerProfileRequest getPlayerProfileRequest)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Adds playfab username/password auth to an existing account created via an anonymous auth method, e.g. automatic device
         /// ID login.

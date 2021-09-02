@@ -2395,6 +2395,8 @@ namespace PlayFab.AdminModels
         SteamUserNotFound,
         ElasticSearchOperationFailed,
         NotImplemented,
+        PublisherNotFound,
+        PublisherDeleted,
         MatchmakingEntityInvalid,
         MatchmakingPlayerAttributesInvalid,
         MatchmakingQueueNotFound,
@@ -2416,6 +2418,8 @@ namespace PlayFab.AdminModels
         MatchmakingQueueLimitExceeded,
         MatchmakingRequestTypeMismatch,
         MatchmakingBadRequest,
+        PubSubFeatureNotEnabledForTitle,
+        PubSubTooManyRequests,
         TitleConfigNotFound,
         TitleConfigUpdateConflict,
         TitleConfigSerializationError,
@@ -2517,7 +2521,22 @@ namespace PlayFab.AdminModels
         AsyncExportNotFound,
         AsyncExportRateLimitExceeded,
         SnapshotNotFound,
-        InventoryApiNotImplemented
+        InventoryApiNotImplemented,
+        LobbyDoesNotExist,
+        LobbyRateLimitExceeded,
+        LobbyPlayerAlreadyJoined,
+        LobbyNotJoinable,
+        LobbyMemberCannotRejoin,
+        LobbyCurrentPlayersMoreThanMaxPlayers,
+        LobbyPlayerNotPresent,
+        LobbyBadRequest,
+        LobbyPlayerMaxLobbyLimitExceeded,
+        LobbyNewOwnerMustBeConnected,
+        LobbyCurrentOwnerStillConnected,
+        LobbyMemberIsNotOwner,
+        EventSamplingInvalidRatio,
+        EventSamplingInvalidEventName,
+        EventSamplingRatioNotFound
     }
 
     [Serializable]
@@ -4486,7 +4505,9 @@ namespace PlayFab.AdminModels
         /// </summary>
         public string DisplayName;
         /// <summary>
-        /// List of experiment variants for the player.
+        /// List of experiment variants for the player. Note that these variants are not guaranteed to be up-to-date when returned
+        /// during login because the player profile is updated only after login. Instead, use the LoginResult.TreatmentAssignment
+        /// property during login to get the correct variants and variables.
         /// </summary>
         public List<string> ExperimentVariants;
         /// <summary>
@@ -6953,10 +6974,6 @@ namespace PlayFab.AdminModels
         /// </summary>
         public string Username;
         /// <summary>
-        /// Windows Hello account information, if a Windows Hello account has been linked
-        /// </summary>
-        public UserWindowsHelloInfo WindowsHelloInfo;
-        /// <summary>
         /// User XBox account information, if a XBox account has been linked
         /// </summary>
         public UserXboxInfo XboxInfo;
@@ -7149,7 +7166,6 @@ namespace PlayFab.AdminModels
         XboxLive,
         Parse,
         Twitch,
-        WindowsHello,
         ServerCustomId,
         NintendoSwitchDeviceId,
         FacebookInstantGamesId,
@@ -7264,19 +7280,6 @@ namespace PlayFab.AdminModels
         /// Twitch Username
         /// </summary>
         public string TwitchUserName;
-    }
-
-    [Serializable]
-    public class UserWindowsHelloInfo : PlayFabBaseModel
-    {
-        /// <summary>
-        /// Windows Hello Device Name
-        /// </summary>
-        public string WindowsHelloDeviceName;
-        /// <summary>
-        /// Windows Hello Public Key Hash
-        /// </summary>
-        public string WindowsHelloPublicKeyHash;
     }
 
     [Serializable]
