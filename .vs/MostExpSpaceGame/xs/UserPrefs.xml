@@ -1,18 +1,16 @@
 ﻿<Properties StartupConfiguration="{CE6E1712-ED91-463C-15E6-6B60CC4974A2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/LTweenEnDis.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/emmiterScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/Localization/Scripts/ChangeLanguage.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Controllers/GameController.cs" />
-      <File FileName="Assets/Leaderboard/Scripts/PlayFabManager.cs" Line="159" Column="30" />
-      <File FileName="Assets/Scripts/Controllers/SecureInt.cs" />
-      <File FileName="Assets/Scripts/Enemies/asteroidScript.cs" />
-      <File FileName="Assets/PlayFabSDK/Client/PlayFabClientModels.cs" />
-      <File FileName="Assets/Scripts/UI/LTweenEnDis.cs" Line="14" Column="23" />
+      <File FileName="Assets/Scripts/Controllers/emmiterScript.cs" Line="73" Column="14" />
+      <File FileName="Assets/Notifications/NotificationManagerIOS.cs" Line="14" Column="20" />
+      <File FileName="Assets/Notifications/NotificationManager.cs" />
+      <File FileName="Assets/Scripts/Localization/Scripts/Translator.cs" />
+      <File FileName="Assets/Scripts/Localization/Scripts/ChangeLanguage.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0255eb13-7165-4888-9a88-9fe8130f5d1a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3d70190f-0319-417f-a290-1fc52951c969" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

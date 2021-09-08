@@ -5,29 +5,26 @@ using UnityEngine;
 public class emmiterScript : MonoBehaviour
 {
     [Header ("Game objects")]
-    public GameObject Asteroid;  // берем модель астероида
-    public GameObject RelBonus; // берем модель бонуса перезрядки
-    public GameObject DeathSphere; // моделька сферы смерти
+    public GameObject Asteroid;
+    public GameObject RelBonus;
+    public GameObject DeathSphere;
     public GameObject emmiter;
-    [Header ("Ads")]
-    private UnityAdsHelper _actionTarget;
     bool create = false;
     [Header ("Asteroids")]
-    public float minDelay, maxDelay;  // задержка между запусками астероидов
-    float nextLaunchTime; // время следующего запуска астероида
+    public float minDelay, maxDelay;
+    float nextLaunchTime; 
     [Header ("Bonus")]
-    public float minDelayBonus, maxDelayBonus; // задержка между запусками бонусов
+    public float minDelayBonus, maxDelayBonus;
     public float minDelayDeath, maxDelayDeath;
-    float nextLaunchTimeBonus; // время следующего запуска бонуса
+    float nextLaunchTimeBonus;
     float nextLaunchTimeDeath;
     [Header ("Difficulty")]
-    float difficulty = 1.0f; // дефолтная сложность
+    float difficulty = 1.0f;
 
     private void Start()
     {
-        _actionTarget = emmiter.GetComponent<UnityAdsHelper>();
 
-        if (GameController.instance.diff == 0)     // меняем сложность в зависимости от выбора игрока
+        if (GameController.instance.diff == 0)
         {
             difficulty = 0.8f;
         } else if (GameController.instance.diff == 1)
@@ -41,7 +38,6 @@ public class emmiterScript : MonoBehaviour
 
     void Update()
     {
-        // балансные правки
         if (GameController.instance.score >= 10000 && GameController.instance.score < 100000)
         {
             minDelayBonus = 30;
@@ -61,10 +57,6 @@ public class emmiterScript : MonoBehaviour
         {
             if (!create)
             {
-                if (GameController.instance.score > 1)
-                {
-                    _actionTarget.ShowVideoAd(); // запуск рекламы
-                }
                 create = true;
             }
                 // останов эммитера

@@ -33,10 +33,10 @@ public class ImageRepl : EditorWindow
 
     private Vector2 scrollPosition = Vector2.zero;
 
-    [MenuItem("Bogdanum Tools/Sprite Replacement")]
+    [MenuItem("Bogdanum/Image Replacement")]
     static void OpenWindow()
     {
-        ImageRepl window = (ImageRepl)GetWindow(typeof(ImageRepl), false, "IQ тест от деда Абдула");
+        ImageRepl window = (ImageRepl)GetWindow(typeof(ImageRepl), false, "");
         window.maxSize = new Vector2(620, 570);
         window.minSize = new Vector2(620, 570);
         window.Show();
