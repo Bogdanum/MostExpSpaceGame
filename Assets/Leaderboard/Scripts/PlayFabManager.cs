@@ -5,6 +5,7 @@ using PlayFab.ClientModels;
 using UnityEngine.UI;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -64,13 +65,19 @@ public class PlayFabManager : MonoBehaviour
         public string ScoreLBname = "BestPlayers";
         public string AsterLBname = "Asteroids";
 
-        string loggedInPlayfabId;
+        public string loggedInPlayfabId;
         private TextAsset textAsset;
         private string[] forbiddenWords;
+        private int avatarID;
+        public Dictionary<string, int> avatarStorage;
     #endregion
+    public static PlayFabManager instance;
+
+    private void Awake() { instance = this; }
 
     void Start()
     {
+        avatarStorage = new Dictionary<string, int>();
         ControlBlockPanel.SetActive(true);
         Login();
     }
@@ -107,7 +114,9 @@ public class PlayFabManager : MonoBehaviour
             }
             GetFuckingBestScore();
             GetFuckingBestAster();
-            ControlBlockPanel.SetActive(false);
+            GetUserAvatarID(result.PlayFabId);
+            PlayerLeaderboardStatus();
+            GetAvatarStorage();
         }
 
         void OnError(PlayFabError error)
@@ -194,6 +203,25 @@ public class PlayFabManager : MonoBehaviour
                         texts[1].color = playerColor;
                         texts[2].color = playerColor;
                     }
+                    switch (item.Position)
+                    {
+                        case 0:
+                            newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(255, 215, 0, 255);
+                            break;
+                        case 1:
+                            newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(192, 192, 192, 255);
+                    break;
+                        case 2:
+                            newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(205, 127, 50, 255);
+                    break;
+                        default: break; 
+                    }
+                    int itemAvatar = 0;
+                    if (avatarStorage.ContainsKey(item.PlayFabId))
+                    itemAvatar = avatarStorage[item.PlayFabId];
+
+                    newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
+                    AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
                     
                 }
 
@@ -230,17 +258,75 @@ public class PlayFabManager : MonoBehaviour
                     texts[2].color = playerColor;
                 }
 
+                switch (item.Position)
+                {
+                    case 0:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(255, 215, 0, 255);
+                        break;
+                    case 1:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(192, 192, 192, 255);
+                        break;
+                    case 2:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(205, 127, 50, 255);
+                        break;
+                    default: break;
+                }
+                int itemAvatar = 0;
+                if (avatarStorage.ContainsKey(item.PlayFabId))
+                    itemAvatar = avatarStorage[item.PlayFabId];
+
+                newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
+                AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+
                 Debug.Log(string.Format("PLACE: {0} | ID: {1} | SCORE: {2}",
-                       item.Position, item.DisplayName, item.StatValue));
+                           item.Position, item.DisplayName, item.StatValue));
             }
        
         }
+
+    private void PlayerLeaderboardStatus()
+    {
+        var request = new GetLeaderboardRequest()
+        {
+            StatisticName = "BestPlayers",
+            StartPosition = 0,
+            MaxResultsCount = 4
+        };
+        PlayFabClientAPI.GetLeaderboard(
+            request,
+            result => {
+                foreach (var player in result.Leaderboard)
+                {
+                    if (player.PlayFabId == loggedInPlayfabId)
+                    switch (player.Position)
+                    {
+                        case 0:
+                            AvatarGetterMenu.Status = "Gold";
+                            break;
+                        case 1:
+                            AvatarGetterMenu.Status = "Silver";
+                            break;
+                        case 2:
+                            AvatarGetterMenu.Status = "Bronze";
+                            break;
+                        case 3:
+                            AvatarGetterMenu.Status = "Simple";
+                            break;
+                        default:
+                            AvatarGetterMenu.Status = "Simple";
+                            break;
+                    }
+                }
+            },
+            error => { Debug.LogError("Ошибка получения статуса игрока в таблице лидеров");
+            });    
+    }
 
     #endregion LEADERBOARD SCORE
 
     #region LEADERBOARD ASTEROIDS
 
-        public void GetAsterLeaderboard()
+    public void GetAsterLeaderboard()
         {
             var request = new GetLeaderboardRequest
             {
@@ -274,6 +360,25 @@ public class PlayFabManager : MonoBehaviour
                     texts[1].color = playerColor;
                     texts[2].color = playerColor;
                 }
+                switch (item.Position)
+                {
+                    case 0:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(255, 215, 0, 255);
+                        break;
+                    case 1:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(192, 192, 192, 255);
+                        break;
+                    case 2:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(205, 127, 50, 255);
+                        break;
+                    default: break;
+                }
+                int itemAvatar = 0;
+                if (avatarStorage.ContainsKey(item.PlayFabId))
+                    itemAvatar = avatarStorage[item.PlayFabId];
+
+                newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
+                AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
             }
         }
 
@@ -308,8 +413,28 @@ public class PlayFabManager : MonoBehaviour
                     texts[2].color = playerColor;
                 }
 
+                switch (item.Position)
+                {
+                    case 0:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(255, 215, 0, 255);
+                        break;
+                    case 1:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(192, 192, 192, 255);
+                        break;
+                    case 2:
+                        newGo.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Image>().color = new Color32(205, 127, 50, 255);
+                        break;
+                    default: break;
+                }
+                int itemAvatar = 0;
+                if (avatarStorage.ContainsKey(item.PlayFabId))
+                    itemAvatar = avatarStorage[item.PlayFabId];
+
+                newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
+                AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+
                 Debug.Log(string.Format("PLACE: {0} | ID: {1} | SCORE: {2}",
-                       item.Position, item.DisplayName, item.StatValue));
+                           item.Position, item.DisplayName, item.StatValue));
             }
         }
 
@@ -375,9 +500,83 @@ public class PlayFabManager : MonoBehaviour
             Debug.Log("Sucessfull asteroids leaderboard send");
         }
 
+        public static void SetUserAvatarID(int ID)
+        {
+            PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+            {
+                Data = new Dictionary<string, string>()
+                {
+                    {"StatusID", ID.ToString()}
+                },
+                Permission = UserDataPermission.Public
+            },
+            result => { },
+            error => { });;
+        }
+
     #endregion EXTERNAL FUNCTIONS
 
     #region INTERNAL FUNCTIONS
+
+    void GetAvatarStorage()
+    {
+        var request = new GetLeaderboardRequest
+        {
+            StatisticName = ScoreLBname,
+            StartPosition = 0,
+            MaxResultsCount = playersCountAll
+        };
+        PlayFabClientAPI.GetLeaderboard(request,
+        result => {
+            foreach (var player in result.Leaderboard)
+            {
+                StartCoroutine(AddAvatarToDictionary(player.PlayFabId));
+            }
+            ControlBlockPanel.SetActive(false);
+        },
+        error => { ControlBlockPanel.SetActive(false); });
+    }
+
+    private IEnumerator AddAvatarToDictionary(string playfabID)
+    {
+        bool trigger = false;
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        {
+            PlayFabId = playfabID,
+            Keys = null
+        },
+        result =>
+        {
+            if (result.Data != null && result.Data.ContainsKey("StatusID"))
+            {
+                avatarStorage.Add(playfabID, int.Parse(result.Data["StatusID"].Value));
+                trigger = true;
+            }
+            else
+            {
+                avatarStorage.Add(playfabID, 0);
+                trigger = true;
+            }
+        },
+        error => { Debug.LogError("Ошибка"); });
+        yield return trigger == true;
+    }
+
+    void GetUserAvatarID(string PlayfabID)
+    {
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        {
+            PlayFabId = PlayfabID,
+            Keys = null
+        },
+        result => {
+            if (result.Data != null && result.Data.ContainsKey("StatusID"))
+            {
+                AvatarController.SelectedAvatar = int.Parse(result.Data["StatusID"].Value);
+            }
+        },
+        error => { });
+    }
 
     void GetFuckingBestScore()
         {
