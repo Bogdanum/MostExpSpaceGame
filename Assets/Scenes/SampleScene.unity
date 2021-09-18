@@ -5237,6 +5237,29 @@ MonoBehaviour:
   ScoreLBname: BestPlayers
   AsterLBname: Asteroids
   loggedInPlayfabId: 
+  flags:
+  - {fileID: 21300000, guid: 9f8dfb8031f684aacbb6ade28c17766c, type: 3}
+  - {fileID: 21300000, guid: 0e498df8029e3411aba2d79d379a04a2, type: 3}
+  - {fileID: 21300000, guid: 1b717d9a31ee84e649ac2af513bde451, type: 3}
+  - {fileID: 21300000, guid: bcd2e196d13474d178be36966bc89797, type: 3}
+  - {fileID: 21300000, guid: 46d084df0bb2a42df961103e95af793a, type: 3}
+  - {fileID: 21300000, guid: 74df91aeca0724218b99577874736346, type: 3}
+  - {fileID: 21300000, guid: 92be3c520aaa94ba4b555dd698322d4b, type: 3}
+  - {fileID: 21300000, guid: c5d0a50b36fb348a7a3124b58be0c4fe, type: 3}
+  - {fileID: 21300000, guid: f87cc54a6d7484eceb32be185e21a90d, type: 3}
+  - {fileID: 21300000, guid: 973c2a0827b3f4f8c8de7997fd99e839, type: 3}
+  - {fileID: 21300000, guid: 831698fd182684e079936a64ff02c667, type: 3}
+  - {fileID: 21300000, guid: 3372e0fdf02e742139d6fe3b9d50375f, type: 3}
+  - {fileID: 21300000, guid: bed105b1034314c4f87970660705daa5, type: 3}
+  - {fileID: 21300000, guid: e30f471cdd4dc40828ba98225d56714c, type: 3}
+  - {fileID: 21300000, guid: 88b4e6a1f8c82467cb5c17338c9cb5b5, type: 3}
+  - {fileID: 21300000, guid: 1fb0d26a58e4d458dba9260e4c89acbb, type: 3}
+  - {fileID: 21300000, guid: 3ae4b4d1d771340e09d6afa81b98e3ec, type: 3}
+  - {fileID: 21300000, guid: f04edcea7a4084bce9896a5e43c6e86d, type: 3}
+  - {fileID: 21300000, guid: 36e4495ac55664e34aabdf925f1d0156, type: 3}
+  - {fileID: 21300000, guid: 397f59c7f2c6c40c9a4e0f52d50ef0ee, type: 3}
+  - {fileID: 21300000, guid: 2b5feb394e217479b811c6b07831fd77, type: 3}
+  - {fileID: 21300000, guid: bcba5a1fc387f4edca0f4e13f35c27d8, type: 3}
 --- !u!4 &496323677
 Transform:
   m_ObjectHideFlags: 0
@@ -21003,8 +21026,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263fdeccdfa345a6bd758411e050348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RecordTitle: 
-  RecordBody: 
   recordDelay: 12
 --- !u!1001 &404112952372779240
 PrefabInstance:
@@ -22837,7 +22858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d35215297c8734ec4bcc3dc717e79267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recordDelay: 0
 --- !u!1001 &8906258239877337452
 PrefabInstance:
   m_ObjectHideFlags: 0

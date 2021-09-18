@@ -65,11 +65,13 @@ public class PlayFabManager : MonoBehaviour
         public string ScoreLBname = "BestPlayers";
         public string AsterLBname = "Asteroids";
 
-        public string loggedInPlayfabId;
+        [HideInInspector]public string loggedInPlayfabId;
         private TextAsset textAsset;
         private string[] forbiddenWords;
         private int avatarID;
         public Dictionary<string, int> avatarStorage;
+        private Dictionary<string, Sprite> flagsStorage;
+        [SerializeField] private Sprite[] flags;
     #endregion
     public static PlayFabManager instance;
 
@@ -78,6 +80,7 @@ public class PlayFabManager : MonoBehaviour
     void Start()
     {
         avatarStorage = new Dictionary<string, int>();
+        flagsStorage = new Dictionary<string, Sprite>();
         ControlBlockPanel.SetActive(true);
         Login();
     }
@@ -92,7 +95,9 @@ public class PlayFabManager : MonoBehaviour
                 CreateAccount = true,
                 InfoRequestParameters = new GetPlayerCombinedInfoRequestParams
                 {
-                    GetPlayerProfile = true
+                    GetPlayerProfile = true,
+                    GetUserData = true,
+                    GetTitleData = true
                 }
             };
             PlayFabClientAPI.LoginWithCustomID(request, OnSuccess, OnError);
@@ -104,8 +109,21 @@ public class PlayFabManager : MonoBehaviour
             Debug.Log("Successful login/accaunt create!");
             if (result.InfoResultPayload.PlayerProfile != null)
             {
-                //name = result.InfoResultPayload.PlayerProfile.DisplayName;
                 nameMenu.text = result.InfoResultPayload.PlayerProfile.DisplayName;
+                if (!flagsStorage.ContainsKey(result.PlayFabId))
+                PlayFabClientAPI.ExecuteCloudScript(new ExecuteCloudScriptRequest()
+                {
+                    FunctionName = "GetUserLocation"
+                },
+                result => {
+                    string Countrycode = result.FunctionResult.ToString().Substring(54, 2);
+                    Debug.LogWarning("--------CountryCode--------");
+                    Debug.LogWarning(Countrycode);
+                    Debug.LogWarning(result.FunctionResult.ToString());
+                    Debug.LogWarning("--------CountryCode--------");
+                    CountrySender(Countrycode);
+                },
+                error => { });
             }
             else
             {
@@ -116,7 +134,7 @@ public class PlayFabManager : MonoBehaviour
             GetFuckingBestAster();
             GetUserAvatarID(result.PlayFabId);
             PlayerLeaderboardStatus();
-            GetAvatarStorage();
+            GetAvatarAndSpriteStorage();
         }
 
         void OnError(PlayFabError error)
@@ -222,6 +240,10 @@ public class PlayFabManager : MonoBehaviour
 
                     newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
                     AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+
+                    if (flagsStorage.ContainsKey(item.PlayFabId))
+                        newGo.transform.GetChild(4).gameObject.GetComponent<Image>().sprite = flagsStorage[item.PlayFabId];
+
                     
                 }
 
@@ -278,8 +300,13 @@ public class PlayFabManager : MonoBehaviour
                 newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
                 AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
 
+                if (flagsStorage.ContainsKey(item.PlayFabId))
+                    newGo.transform.GetChild(4).gameObject.GetComponent<Image>().sprite = flagsStorage[item.PlayFabId];
+
+                
+
                 Debug.Log(string.Format("PLACE: {0} | ID: {1} | SCORE: {2}",
-                           item.Position, item.DisplayName, item.StatValue));
+                               item.Position, item.DisplayName, item.StatValue));
             }
        
         }
@@ -379,7 +406,10 @@ public class PlayFabManager : MonoBehaviour
 
                 newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
                 AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
-            }
+
+                if (flagsStorage.ContainsKey(item.PlayFabId))
+                    newGo.transform.GetChild(4).gameObject.GetComponent<Image>().sprite = flagsStorage[item.PlayFabId];
+        }
         }
 
         public void GetLeaderboardAsterAroundPlayer()               
@@ -432,6 +462,9 @@ public class PlayFabManager : MonoBehaviour
 
                 newGo.transform.GetChild(0).gameObject.transform.GetChild(1).gameObject.GetComponent<Image>().sprite =
                 AvatarController.instance.avatars[itemAvatar].transform.GetChild(1).gameObject.GetComponent<Image>().sprite;
+
+                if (flagsStorage.ContainsKey(item.PlayFabId))
+                    newGo.transform.GetChild(4).gameObject.GetComponent<Image>().sprite = flagsStorage[item.PlayFabId];
 
                 Debug.Log(string.Format("PLACE: {0} | ID: {1} | SCORE: {2}",
                            item.Position, item.DisplayName, item.StatValue));
@@ -518,7 +551,7 @@ public class PlayFabManager : MonoBehaviour
 
     #region INTERNAL FUNCTIONS
 
-    void GetAvatarStorage()
+    void GetAvatarAndSpriteStorage()
     {
         var request = new GetLeaderboardRequest
         {
@@ -531,6 +564,7 @@ public class PlayFabManager : MonoBehaviour
             foreach (var player in result.Leaderboard)
             {
                 StartCoroutine(AddAvatarToDictionary(player.PlayFabId));
+                StartCoroutine(AddCountryToDictionary(player.PlayFabId));
             }
             ControlBlockPanel.SetActive(false);
         },
@@ -569,11 +603,74 @@ public class PlayFabManager : MonoBehaviour
             PlayFabId = PlayfabID,
             Keys = null
         },
-        result => {
+        result =>
+        {
             if (result.Data != null && result.Data.ContainsKey("StatusID"))
             {
                 AvatarController.SelectedAvatar = int.Parse(result.Data["StatusID"].Value);
             }
+        },
+        error => { });
+    }
+
+    private IEnumerator AddCountryToDictionary(string PlayFabID)
+    {
+        bool trigger = false;
+        PlayFabClientAPI.GetUserData(new GetUserDataRequest()
+        {
+            PlayFabId = PlayFabID,
+            Keys = null
+        },
+        result => {
+                if (result.Data != null && result.Data.ContainsKey("CountryCode"))
+                {
+                    string CountryCode = result.Data["CountryCode"].Value;
+                    int CountryIndex;
+                    switch (CountryCode)
+                    {
+                        case "BY": CountryIndex = 1; break;
+                        case "BR": CountryIndex = 2; break;
+                        case "CA": CountryIndex = 3; break;
+                        case "CN": CountryIndex = 4; break;
+                        case "FI": CountryIndex = 5; break;
+                        case "FR": CountryIndex = 6; break;
+                        case "GE": CountryIndex = 7; break;
+                        case "IN": CountryIndex = 8; break;
+                        case "IT": CountryIndex = 9; break;
+                        case "JP": CountryIndex = 10; break;
+                        case "MX": CountryIndex = 11; break;
+                        case "PL": CountryIndex = 12; break;
+                        case "PT": CountryIndex = 13; break;
+                        case "RU": CountryIndex = 14; break;
+                        case "KR": CountryIndex = 15; break;
+                        case "ES": CountryIndex = 16; break;
+                        case "SE": CountryIndex = 17; break;
+                        case "TR": CountryIndex = 18; break;
+                        case "UA": CountryIndex = 19; break;
+                        case "US": CountryIndex = 20; break;
+                        case "MY": CountryIndex = 21; break;
+                        default: CountryIndex = 0; break;
+                    }
+                    flagsStorage.Add(PlayFabID, flags[CountryIndex]);
+                }
+                trigger = true; 
+        },
+        error => { });
+        yield return trigger == true;
+    }
+
+    private void CountrySender(string CountryCode) 
+    {
+        PlayFabClientAPI.UpdateUserData(new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>()
+            {
+               {"CountryCode", CountryCode}
+            },
+            Permission = UserDataPermission.Public
+        },
+        result => {
+            Debug.LogWarning("Successful send Player country code! Code: " + CountryCode);
         },
         error => { });
     }

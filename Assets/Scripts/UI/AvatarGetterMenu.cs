@@ -24,11 +24,11 @@ public class AvatarGetterMenu : MonoBehaviour
     {
         switch (status)
         {
-            case "Simple": return new Color32(139, 69, 38, 255);
+            case "Simple": return new Color32(255, 255, 255, 0);
             case "Gold":   return new Color32(255, 215, 0, 255);
             case "Silver": return new Color32(192, 192, 192, 255);
             case "Bronze": return new Color32(205, 127, 50, 255);
-            default:       return new Color32(139, 69, 38, 255);
+            default:       return new Color32(255, 255, 255, 0);
         }
     }
 

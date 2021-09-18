@@ -12,20 +12,20 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51681
+49476
 Successfully changed project path to: /Users/bogdan/Bogdanum Games/SpaceSurvival3D
 /Users/bogdan/Bogdanum Games/SpaceSurvival3D
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 37.18 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 42.05 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.13f1 (71691879b7f5)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets
 GfxDevice: creating device client; threaded=0
-2021-09-12 18:10:06.585 Unity[2966:92251] (null) preferred device: Apple M1 (high power)
-2021-09-12 18:10:06.585 Unity[2966:92251] Metal devices available: 1
-2021-09-12 18:10:06.585 Unity[2966:92251] 0: Apple M1 (high power)
-2021-09-12 18:10:06.586 Unity[2966:92251] Using device Apple M1 (high power)
+2021-09-18 16:42:05.347 Unity[2753:106490] (null) preferred device: Apple M1 (high power)
+2021-09-18 16:42:05.347 Unity[2753:106490] Metal devices available: 1
+2021-09-18 16:42:05.347 Unity[2753:106490] 0: Apple M1 (high power)
+2021-09-18 16:42:05.347 Unity[2753:106490] Using device Apple M1 (high power)
 Initializing Metal device caps: Apple M1
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
@@ -33,26 +33,29 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56966
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56753
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Registered in 0.002025 seconds.
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.13f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.002268 seconds.
+Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 39.65 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 38.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.123 seconds
+- Completed reload, in  3.552 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004866 seconds.
+Registered in 0.003997 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.328 seconds
+- Completed reload, in  2.510 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
@@ -60,14 +63,14 @@ Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
 Launching external process: /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Tools/UnityShaderCompiler
 Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.45 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1904 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 178.5 MB.
-System memory in use after: 178.6 MB.
+Unloading 1872 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 178.0 MB.
+System memory in use after: 178.1 MB.
 
-Unloading 38 unused Assets to reduce memory usage. Loaded Objects now: 2325.
-Total: 1.799000 ms (FindLiveObjects: 0.120542 ms CreateObjectMapping: 0.035792 ms MarkObjects: 1.567291 ms  DeleteObjects: 0.074625 ms)
+Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2292.
+Total: 2.944459 ms (FindLiveObjects: 0.126750 ms CreateObjectMapping: 0.035833 ms MarkObjects: 2.445792 ms  DeleteObjects: 0.335167 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -81,326 +84,35 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Res/Images & Sprites/logo 1.png
-  artifactKey: Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/logo 1.png using Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c4bc44fcdd9396c6addce140a31673b6') in 0.656270 seconds 
-  Import took 0.658845 seconds .
+  path: Assets/Scripts/Localization/Sprites/Flags/default/malasya.png
+  artifactKey: Guid(bcba5a1fc387f4edca0f4e13f35c27d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Localization/Sprites/Flags/default/malasya.png using Guid(bcba5a1fc387f4edca0f4e13f35c27d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '807ce060f67c75dd258ac08de88746dc') in 0.838885 seconds 
+  Import took 0.841965 seconds .
 
-========================================================================
-Received Import Request.
-  Time since last request: 0.033083 seconds.
-  path: Assets/Res/Images & Sprites/logo 1.png
-  artifactKey: Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/logo 1.png using Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c6dc196db602b1fe5ae0de6227185c8') in 0.078755 seconds 
-  Import took 0.081432 seconds .
-
-========================================================================
-Received Prepare
-Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
-Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 7.38 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 29 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 148.2 MB.
-System memory in use after: 148.3 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2332.
-Total: 3.913792 ms (FindLiveObjects: 0.268041 ms CreateObjectMapping: 0.041834 ms MarkObjects: 3.570708 ms  DeleteObjects: 0.031667 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003013 seconds.
+Registered in 0.004030 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.71 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.702 seconds
+- Completed reload, in  2.669 seconds
 Platform modules already initialized, skipping
 Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.67 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 181.7 MB.
-System memory in use after: 181.8 MB.
-
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2337.
-Total: 2.406833 ms (FindLiveObjects: 0.145833 ms CreateObjectMapping: 0.039208 ms MarkObjects: 2.197375 ms  DeleteObjects: 0.023583 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.003324 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.714 seconds
-Platform modules already initialized, skipping
-Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(9) subTarget(16777218) extendedPlatform(0)
-Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
-Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.50 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 181.9 MB.
+System memory in use before: 181.8 MB.
 System memory in use after: 182.0 MB.
 
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2342.
-Total: 2.400791 ms (FindLiveObjects: 0.196209 ms CreateObjectMapping: 0.042791 ms MarkObjects: 2.136417 ms  DeleteObjects: 0.024291 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Prepare
-Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
-Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 2.70 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 29 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 147.5 MB.
-System memory in use after: 147.6 MB.
-
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2342.
-Total: 1.387334 ms (FindLiveObjects: 0.115000 ms CreateObjectMapping: 0.040417 ms MarkObjects: 1.214500 ms  DeleteObjects: 0.016917 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  Time since last request: 804.411477 seconds.
-  path: Assets/Res/Images & Sprites/5a364aed0c2f94.2186873815135075650499.png
-  artifactKey: Guid(d21aa3158fff44b0b989e56bc88970d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/5a364aed0c2f94.2186873815135075650499.png using Guid(d21aa3158fff44b0b989e56bc88970d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be8e85c0ed8615d434c685645d6c6a26') in 0.192193 seconds 
-  Import took 0.199598 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000329 seconds.
-  path: Assets/Res/Images & Sprites/kisspng-clip-art-computer-icons-house-vector-graphics-home-ip-svg-png-icon-free-download-23-593-onlinewe-5b74fab11925d7.027784471534393009103.png
-  artifactKey: Guid(b903d72f42f1d47c98fc9f9ae999c2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/kisspng-clip-art-computer-icons-house-vector-graphics-home-ip-svg-png-icon-free-download-23-593-onlinewe-5b74fab11925d7.027784471534393009103.png using Guid(b903d72f42f1d47c98fc9f9ae999c2ce) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b75c9fbbbfc9b4caa1a835f9b9bb64be') in 0.019154 seconds 
-  Import took 0.021380 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Res/Images & Sprites/logo 1.png
-  artifactKey: Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/logo 1.png using Guid(171d4c78ea5704045b2d6c5eab9a6fec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '799dce59874a614a50a9044816382526') in 0.013577 seconds 
-  Import took 0.015900 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000275 seconds.
-  path: Assets/Res/Images & Sprites/kisspng-computer-icons-clip-art-close-button-5b2e08ce980801.9933319515297435666227.png
-  artifactKey: Guid(f04361a46ed234013a2408bb803c4b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/kisspng-computer-icons-clip-art-close-button-5b2e08ce980801.9933319515297435666227.png using Guid(f04361a46ed234013a2408bb803c4b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cf6e136be6f87507506aa1e73ace701') in 0.009104 seconds 
-  Import took 0.011523 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Res/Images & Sprites/bogdanum.png
-  artifactKey: Guid(999027082f6254e989b0b86c0af546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/bogdanum.png using Guid(999027082f6254e989b0b86c0af546fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4429ccab9217ab62ff04c7a328307565') in 0.009730 seconds 
-  Import took 0.012237 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000219 seconds.
-  path: Assets/Res/Images & Sprites/lb1.png
-  artifactKey: Guid(fa2d27f464d03412f9b9904fd9333993) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/lb1.png using Guid(fa2d27f464d03412f9b9904fd9333993) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '767499db76ac1f794ad6a126d1e88486') in 0.012409 seconds 
-  Import took 0.014811 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000180 seconds.
-  path: Assets/Res/Images & Sprites/SSurviveICO.png
-  artifactKey: Guid(501a51579bae34b5a9f2f370cb98facf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/SSurviveICO.png using Guid(501a51579bae34b5a9f2f370cb98facf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b56ac0868389b6e9afffb9e958daef9') in 0.011653 seconds 
-  Import took 0.013749 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000215 seconds.
-  path: Assets/Res/Images & Sprites/Purple_circle_100%.png
-  artifactKey: Guid(007fbb996abe04c4d8dbeb65be6f5117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/Purple_circle_100%.png using Guid(007fbb996abe04c4d8dbeb65be6f5117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de63a879b426d94fad7785a4b8e1d927') in 0.009225 seconds 
-  Import took 0.011606 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000228 seconds.
-  path: Assets/Res/Images & Sprites/kisspng-computer-icons-home-clip-art-house-icon-5acf4c6ec938b0.0186582615235349588242.png
-  artifactKey: Guid(8da3b2c3e28b64e51aab3f09f93836f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/kisspng-computer-icons-home-clip-art-house-icon-5acf4c6ec938b0.0186582615235349588242.png using Guid(8da3b2c3e28b64e51aab3f09f93836f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0062ca360f32741b294020ab6a9fcdf5') in 0.029957 seconds 
-  Import took 0.033197 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000317 seconds.
-  path: Assets/Res/Images & Sprites/lb2.png
-  artifactKey: Guid(79ad4483a9fd24adb84c4c55782c44cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/lb2.png using Guid(79ad4483a9fd24adb84c4c55782c44cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b75ed0669cbc25cc53d4713fe0787dc') in 0.009472 seconds 
-  Import took 0.012208 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000264 seconds.
-  path: Assets/Res/Images & Sprites/Chak.png
-  artifactKey: Guid(b3218d61e78d64d219d51c8a57f3bd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/Chak.png using Guid(b3218d61e78d64d219d51c8a57f3bd36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0de774bea183c608a49439562e53553') in 0.009494 seconds 
-  Import took 0.011554 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000265 seconds.
-  path: Assets/Res/Images & Sprites/kisspng-gear-symbol-drawing-clip-art-cog-5ae9aa1679af60.8261493815252628704984.png
-  artifactKey: Guid(dd39ba42a06704237bf99d157c368997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/kisspng-gear-symbol-drawing-clip-art-cog-5ae9aa1679af60.8261493815252628704984.png using Guid(dd39ba42a06704237bf99d157c368997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b19853c296978d417b5a18e0804754e') in 0.015755 seconds 
-  Import took 0.017730 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000294 seconds.
-  path: Assets/Res/Images & Sprites/chatButon.png
-  artifactKey: Guid(e3490523f9f4f4b9cb2de6c573e6c8da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/chatButon.png using Guid(e3490523f9f4f4b9cb2de6c573e6c8da) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30bea1ddef9520fadee87b6773b57612') in 0.011995 seconds 
-  Import took 0.014098 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000176 seconds.
-  path: Assets/Res/Images & Sprites/transparent-trophy-rgt-cycling-pricing-rgt-cycling-has-free-and-p5ea24495cafc96.3529731215876926938314.png
-  artifactKey: Guid(b60cb423912aa4836b41a6ba21c7eded) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/transparent-trophy-rgt-cycling-pricing-rgt-cycling-has-free-and-p5ea24495cafc96.3529731215876926938314.png using Guid(b60cb423912aa4836b41a6ba21c7eded) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64d738a764a09166a30fa31565b68683') in 0.012317 seconds 
-  Import took 0.014385 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000289 seconds.
-  path: Assets/Res/Images & Sprites/UsersBtton.png
-  artifactKey: Guid(d414a2f87e7364de8b694517537c7527) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/Images & Sprites/UsersBtton.png using Guid(d414a2f87e7364de8b694517537c7527) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77cf970a6790bd6b7cc1f6d52395772a') in 0.007954 seconds 
-  Import took 0.010044 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.398886 seconds.
-  path: Assets/Photon
-  artifactKey: Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Photon using Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd55cb1e4bf0b8b1ae9a173c75b001274') in 0.000907 seconds 
-  Import took 0.003124 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.004164 seconds.
-  path: Assets/Photon
-  artifactKey: Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Photon using Guid(98951132346795f438babe7a3183da43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd55cb1e4bf0b8b1ae9a173c75b001274') in 0.000525 seconds 
-  Import took 0.002567 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.878996 seconds.
-  path: Assets/Plugins
-  artifactKey: Guid(13b308dd92af440f6815943630a54883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins using Guid(13b308dd92af440f6815943630a54883) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ccf8afed92a609bcbd8c044469435e70') in 0.001297 seconds 
-  Import took 0.004620 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.013914 seconds.
-  path: Assets/Plugins/Android
-  artifactKey: Guid(8e5cd443bc06f44edaa64d8d6ab16535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Android using Guid(8e5cd443bc06f44edaa64d8d6ab16535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd877fb410ff9da07bda79febb89dc48d') in 0.000910 seconds 
-  Import took 0.004038 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000937 seconds.
-  path: Assets/Plugins/Android
-  artifactKey: Guid(8e5cd443bc06f44edaa64d8d6ab16535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Android using Guid(8e5cd443bc06f44edaa64d8d6ab16535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd877fb410ff9da07bda79febb89dc48d') in 0.000918 seconds 
-  Import took 0.004240 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.184960 seconds.
-  path: Assets/Plugins/Android/AndroidManifest.xml
-  artifactKey: Guid(fc77f947d95cc4281b19be5d63a1116f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/Android/AndroidManifest.xml using Guid(fc77f947d95cc4281b19be5d63a1116f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '407c7e90a6612d3aac7d3a5d40818fe3') in 1.005496 seconds 
-  Import took 1.008287 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.002896 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
-Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.92 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  2.947 seconds
-Platform modules already initialized, skipping
-Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(9) subTarget(16777218) extendedPlatform(0)
-Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
-Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.56 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 186.8 MB.
-System memory in use after: 186.9 MB.
-
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2358.
-Total: 3.315167 ms (FindLiveObjects: 0.213125 ms CreateObjectMapping: 0.057959 ms MarkObjects: 2.992833 ms  DeleteObjects: 0.049375 ms)
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2303.
+Total: 1.566250 ms (FindLiveObjects: 0.171625 ms CreateObjectMapping: 0.037292 ms MarkObjects: 1.331291 ms  DeleteObjects: 0.025042 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -416,26 +128,171 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.003593 seconds.
+Registered in 0.003930 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.69 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.51 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.607 seconds
+- Completed reload, in  2.537 seconds
 Platform modules already initialized, skipping
-Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(9) subTarget(16777218) extendedPlatform(0)
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 0.46 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 187.1 MB.
-System memory in use after: 187.3 MB.
+System memory in use before: 182.3 MB.
+System memory in use after: 182.4 MB.
 
-Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2363.
-Total: 1.443833 ms (FindLiveObjects: 0.128500 ms CreateObjectMapping: 0.036958 ms MarkObjects: 1.252208 ms  DeleteObjects: 0.025416 ms)
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2308.
+Total: 1.518042 ms (FindLiveObjects: 0.126625 ms CreateObjectMapping: 0.038167 ms MarkObjects: 1.331416 ms  DeleteObjects: 0.021083 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.003258 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.540 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.48 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 182.7 MB.
+System memory in use after: 182.8 MB.
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2313.
+Total: 1.519500 ms (FindLiveObjects: 0.128334 ms CreateObjectMapping: 0.036375 ms MarkObjects: 1.329334 ms  DeleteObjects: 0.024291 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.004519 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.60 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.745 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 183.2 MB.
+System memory in use after: 183.3 MB.
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2318.
+Total: 1.491250 ms (FindLiveObjects: 0.126000 ms CreateObjectMapping: 0.036208 ms MarkObjects: 1.303833 ms  DeleteObjects: 0.024125 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.001442 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.454 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 183.6 MB.
+System memory in use after: 183.7 MB.
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2323.
+Total: 1.532833 ms (FindLiveObjects: 0.112750 ms CreateObjectMapping: 0.035000 ms MarkObjects: 1.366000 ms  DeleteObjects: 0.018292 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:framework-osx-AVFoundation: e770b220cccbd017edd2c1fefb359320 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:graphics/normal-map-encoding: 01000000000000000000000000000000 -> 02000000000000000000000000000000
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.002968 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0.55 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.689 seconds
+Platform modules already initialized, skipping
+Switching build target platform(2) subTarget(0) extendedPlatform(0) -> platform(13) subTarget(537395200) extendedPlatform(0)
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1845 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 184.0 MB.
+System memory in use after: 184.1 MB.
+
+Unloading 32 unused Assets to reduce memory usage. Loaded Objects now: 2328.
+Total: 2.638792 ms (FindLiveObjects: 0.133750 ms CreateObjectMapping: 0.036375 ms MarkObjects: 2.440042 ms  DeleteObjects: 0.027500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -452,14 +309,14 @@ AssetImportParameters requested are different than current active one (requested
 Received Prepare
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Refreshing native plugins compatible for Editor in 7.84 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 6.35 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 29 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 152.9 MB.
-System memory in use after: 153.0 MB.
+System memory in use before: 150.6 MB.
+System memory in use after: 150.7 MB.
 
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2363.
-Total: 16.188708 ms (FindLiveObjects: 1.289584 ms CreateObjectMapping: 0.038000 ms MarkObjects: 14.757584 ms  DeleteObjects: 0.102708 ms)
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2328.
+Total: 10.188708 ms (FindLiveObjects: 0.282958 ms CreateObjectMapping: 0.035583 ms MarkObjects: 9.826709 ms  DeleteObjects: 0.042583 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 

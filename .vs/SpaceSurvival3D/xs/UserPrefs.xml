@@ -1,15 +1,15 @@
 ﻿<Properties StartupConfiguration="{A6DF3F74-7451-F098-E4B5-64C4EC4C6F81}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/AvatarGetterMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Leaderboard/Scripts/PlayFabManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/UI/AvatarController.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/UI/Avatar.cs" Line="16" Column="43" />
-      <File FileName="Assets/Scripts/UI/AvatarGetter.cs" Line="14" Column="6" />
-      <File FileName="Assets/Leaderboard/Scripts/PlayFabManager.cs" Line="304" Column="29" />
+      <File FileName="Assets/Leaderboard/Scripts/PlayFabManager.cs" Line="654" Column="70" />
+      <File FileName="Assets/Scripts/UI/AvatarController.cs" />
+      <File FileName="Assets/Scripts/UI/Avatar.cs" />
+      <File FileName="Assets/Scripts/UI/AvatarGetterMenu.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d339cc4b-b432-42c8-ac62-f9706c66091b" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="286ae20e-8e72-4030-9f94-3ea27b0e6b4f" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
