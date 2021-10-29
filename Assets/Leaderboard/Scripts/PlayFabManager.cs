@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Linq;
 
 public class PlayFabManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class PlayFabManager : MonoBehaviour
                 [Header("Элементы окна ввода ника")]
                 public InputField inputField;
                 public Button submitButton;
+                public Button closeButton;
                 public GameObject errorWindowText;
                 public GameObject errorWindowForb;
 
@@ -82,7 +84,14 @@ public class PlayFabManager : MonoBehaviour
         avatarStorage = new Dictionary<string, int>();
         flagsStorage = new Dictionary<string, Sprite>();
         ControlBlockPanel.SetActive(true);
+        StartCoroutine(CBP());
         Login();
+
+        closeButton.onClick.AddListener( delegate {
+            if (nameMenu.text == "" || nameMenu.text.Contains(' ')) SubmitNameButton();
+            else inputName.SetActive(false);
+        });
+
     }
 
     #region LOG IN/CREATE USER ACCOUNT
@@ -359,7 +368,7 @@ public class PlayFabManager : MonoBehaviour
             {
                 StatisticName = AsterLBname,                
                 StartPosition = 0,
-                MaxResultsCount = aroundPlayersCount                      
+                MaxResultsCount = playersCountAll                      
             };
             PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardAsterGet, OnError);
         }
@@ -592,7 +601,7 @@ public class PlayFabManager : MonoBehaviour
                 trigger = true;
             }
         },
-        error => { Debug.LogError("Ошибка"); });
+        error => { Debug.LogError("Ошибка добавнения аватара в коллекцию -------- PlayFabID: " + playfabID); });
         yield return trigger == true;
     }
 
@@ -628,15 +637,15 @@ public class PlayFabManager : MonoBehaviour
                     int CountryIndex;
                     switch (CountryCode)
                     {
-                        case "BY": CountryIndex = 1; break;
-                        case "BR": CountryIndex = 2; break;
-                        case "CA": CountryIndex = 3; break;
-                        case "CN": CountryIndex = 4; break;
-                        case "FI": CountryIndex = 5; break;
-                        case "FR": CountryIndex = 6; break;
-                        case "GE": CountryIndex = 7; break;
-                        case "IN": CountryIndex = 8; break;
-                        case "IT": CountryIndex = 9; break;
+                        case "BY": CountryIndex =  1; break;
+                        case "BR": CountryIndex =  2; break;
+                        case "CA": CountryIndex =  3; break;
+                        case "CN": CountryIndex =  4; break;
+                        case "FI": CountryIndex =  5; break;
+                        case "FR": CountryIndex =  6; break;
+                        case "DE": CountryIndex =  7; break;
+                        case "IN": CountryIndex =  8; break;
+                        case "IT": CountryIndex =  9; break;
                         case "JP": CountryIndex = 10; break;
                         case "MX": CountryIndex = 11; break;
                         case "PL": CountryIndex = 12; break;
@@ -649,7 +658,29 @@ public class PlayFabManager : MonoBehaviour
                         case "UA": CountryIndex = 19; break;
                         case "US": CountryIndex = 20; break;
                         case "MY": CountryIndex = 21; break;
-                        default: CountryIndex = 0; break;
+                        case "AR": CountryIndex = 22; break;
+                        case "AM": CountryIndex = 23; break;
+                        case "AT": CountryIndex = 24; break;
+                        case "AZ": CountryIndex = 25; break;
+                        case "BE": CountryIndex = 26; break;
+                        case "CZ": CountryIndex = 27; break;
+                        case "EG": CountryIndex = 28; break;
+                        case "GR": CountryIndex = 29; break;
+                        case "ID": CountryIndex = 30; break;
+                        case "IR": CountryIndex = 31; break;
+                        case "IQ": CountryIndex = 32; break;
+                        case "IE": CountryIndex = 33; break;
+                        case "KZ": CountryIndex = 34; break;
+                        case "MD": CountryIndex = 35; break;
+                        case "PH": CountryIndex = 36; break;
+                        case "RO": CountryIndex = 37; break;
+                        case "RS": CountryIndex = 38; break;
+                        case "SK": CountryIndex = 39; break;
+                        case "CH": CountryIndex = 40; break;
+                        case "SY": CountryIndex = 41; break;
+                        case "AE": CountryIndex = 42; break;
+                        case "UZ": CountryIndex = 43; break;
+                        default:   CountryIndex =  0; break;
                     }
                     flagsStorage.Add(PlayFabID, flags[CountryIndex]);
                 }
@@ -747,6 +778,13 @@ public class PlayFabManager : MonoBehaviour
                 return true;
             }
             else { return false; }
+        }
+
+        private IEnumerator CBP()
+        {
+            yield return new WaitForSeconds(20);
+            ControlBlockPanel.transform.GetChild(2).gameObject.SetActive(true);
+            ControlBlockPanel.transform.GetChild(3).gameObject.SetActive(true);
         }
 
         public string NameGenerator()

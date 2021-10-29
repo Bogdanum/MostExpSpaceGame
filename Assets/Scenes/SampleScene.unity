@@ -5216,6 +5216,7 @@ MonoBehaviour:
   inputName: {fileID: 993934116}
   inputField: {fileID: 7781751648608456879}
   submitButton: {fileID: 7781751648293107121}
+  closeButton: {fileID: 1420502791}
   errorWindowText: {fileID: 382306608}
   errorWindowForb: {fileID: 892646033}
   nameMenu: {fileID: 1251597141}
@@ -5238,7 +5239,7 @@ MonoBehaviour:
   AsterLBname: Asteroids
   loggedInPlayfabId: 
   flags:
-  - {fileID: 21300000, guid: 9f8dfb8031f684aacbb6ade28c17766c, type: 3}
+  - {fileID: 21300000, guid: f6d60009ddc0449e4a0150220ff18736, type: 3}
   - {fileID: 21300000, guid: 0e498df8029e3411aba2d79d379a04a2, type: 3}
   - {fileID: 21300000, guid: 1b717d9a31ee84e649ac2af513bde451, type: 3}
   - {fileID: 21300000, guid: bcd2e196d13474d178be36966bc89797, type: 3}
@@ -5260,6 +5261,28 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 397f59c7f2c6c40c9a4e0f52d50ef0ee, type: 3}
   - {fileID: 21300000, guid: 2b5feb394e217479b811c6b07831fd77, type: 3}
   - {fileID: 21300000, guid: bcba5a1fc387f4edca0f4e13f35c27d8, type: 3}
+  - {fileID: 21300000, guid: e5de1639e6fac4f7e82907d2380e9393, type: 3}
+  - {fileID: 21300000, guid: 922c549a0a1dc47fbbc520854470ce18, type: 3}
+  - {fileID: 21300000, guid: 0d8a4764db93b4a93bf88519b7ca97f5, type: 3}
+  - {fileID: 21300000, guid: 453dda9c397ff499581b9564e2965ebc, type: 3}
+  - {fileID: 21300000, guid: f4f1e427bf2244d18a6b1bb501e4da2b, type: 3}
+  - {fileID: 21300000, guid: 02fd8680795cc43b0ab2b83264d9711c, type: 3}
+  - {fileID: 21300000, guid: 98592e8f156374bec81a1038d9c4e212, type: 3}
+  - {fileID: 21300000, guid: 21738841eaeb34c0ab4bda676219038d, type: 3}
+  - {fileID: 21300000, guid: e0248e2ee53574b5e9dd51181f230a60, type: 3}
+  - {fileID: 21300000, guid: ad3f6f1a71daa468c805a4ee5d172574, type: 3}
+  - {fileID: 21300000, guid: c74ad29fde8044596b3df7be0d8c262f, type: 3}
+  - {fileID: 21300000, guid: e8d369ea68291488b98f39b75c54c4b6, type: 3}
+  - {fileID: 21300000, guid: 2a666883f201a49c0b60863ccfa756e8, type: 3}
+  - {fileID: 21300000, guid: 1543502c131a14571bc2aa5ffbb5f0dc, type: 3}
+  - {fileID: 21300000, guid: 2caa4c891a3204f2eb7195fc404c9dee, type: 3}
+  - {fileID: 21300000, guid: 3e8b1bb941243484098840404455be24, type: 3}
+  - {fileID: 21300000, guid: d474a52cb8e834d4da564685071744c2, type: 3}
+  - {fileID: 21300000, guid: 856b6046aa789411ca70063ed626bbf9, type: 3}
+  - {fileID: 21300000, guid: 074eb56796f4d427a8bea453d9c163d6, type: 3}
+  - {fileID: 21300000, guid: 030bd07240a5e44b0b4435ffb89cfdf4, type: 3}
+  - {fileID: 21300000, guid: 4bc58306d6d394b85826c1f9116ecc27, type: 3}
+  - {fileID: 21300000, guid: aaa93a20e24c647b4b45f5231192c0ba, type: 3}
 --- !u!4 &496323677
 Transform:
   m_ObjectHideFlags: 0
@@ -5273,7 +5296,7 @@ Transform:
   m_Children:
   - {fileID: 1784084533}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &499138969
 GameObject:
@@ -11482,7 +11505,7 @@ MonoBehaviour:
     m_MinSize: 0
     m_MaxSize: 70
     m_Alignment: 3
-    m_AlignByGeometry: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -13001,31 +13024,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1370557497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 989455499}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1734257451}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1370557497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13151,7 +13150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1388861411
 MonoBehaviour:
@@ -13597,7 +13596,7 @@ GameObject:
   - component: {fileID: 1420502792}
   - component: {fileID: 1420502791}
   m_Layer: 0
-  m_Name: close
+  m_Name: CloseInpName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18323,6 +18322,26 @@ PrefabInstance:
       propertyPath: EmissionModule.enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 199011672764196750, guid: c590b17884b119046bc6412066500b7d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199205359930986294, guid: c590b17884b119046bc6412066500b7d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199374976460404498, guid: c590b17884b119046bc6412066500b7d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 199556183087322092, guid: c590b17884b119046bc6412066500b7d,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c590b17884b119046bc6412066500b7d, type: 3}
 --- !u!1 &1833537503
@@ -19380,6 +19399,10 @@ PrefabInstance:
     - target: {fileID: 1078842447372304, guid: 7c0596d7cf562b345a646e5e9a77f189, type: 3}
       propertyPath: m_Name
       value: ShipModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1078842447372304, guid: 7c0596d7cf562b345a646e5e9a77f189, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4250582375771476, guid: 7c0596d7cf562b345a646e5e9a77f189, type: 3}
       propertyPath: m_RootOrder
@@ -21097,7 +21120,7 @@ PrefabInstance:
     - target: {fileID: 404112952964381167, guid: 75159a3d18b744356894c029e8a3be5e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 404112952964381167, guid: 75159a3d18b744356894c029e8a3be5e,
         type: 3}
