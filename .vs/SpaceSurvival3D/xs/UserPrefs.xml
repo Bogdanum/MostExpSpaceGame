@@ -1,15 +1,21 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Leaderboard/Scripts/PlayFabManager.cs">
+﻿<Properties StartupConfiguration="{1293D007-B566-BD6D-B858-4032F9E19719}|Модульные тесты">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/TouchRestart.cs">
     <Files>
-      <File FileName="Assets/Leaderboard/Scripts/PlayFabManager.cs" Line="87" Column="31" />
-      <File FileName="Assets/Scripts/UI/AvatarController.cs" />
-      <File FileName="Assets/Scripts/UI/Avatar.cs" />
+      <File FileName="Assets/Scripts/Controllers/GameController.cs" Line="44" Column="27" />
+      <File FileName="Assets/Scripts/UI/Avatar.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/AvatarController.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/UI/AvatarGetterMenu.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/FPSctript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/InfoScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/LTweenEnButtons.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/Settings.cs" Line="37" Column="1" />
+      <File FileName="Assets/Scripts/UI/SettingsPanel.cs" Line="27" Column="6" />
+      <File FileName="Assets/Scripts/UI/TouchRestart.cs" Line="21" Column="55" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="bd57155f-c4cf-444a-8518-4dde69102a67" />
+  <MonoDevelop.Ide.ItemProperties.PhotonUnityNetworking.Utilities PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Cam1 : MonoBehaviour
 {
@@ -9,26 +8,10 @@ public class Cam1 : MonoBehaviour
     public Transform target;
     public float smooth = 5.0f;
     public Vector3 offset = new Vector3(0, 2, -5);
+
     void Start()
     {
-        if (GameController.instance.score < 10000)
-        {
-            if (player == null) { return; }
-            else
-            { offset = transform.position - player.transform.position; }
-        }
-        else if ((GameController.instance.score > 10000) && (GameController.instance.score < 100000))
-        {
-            if (player2 == null) { return; }
-            else
-            { offset = transform.position - player2.transform.position; }
-        }
-        else if (GameController.instance.score > 100000)
-        {
-            if (player3 == null) { return; }
-            else
-            { offset = transform.position - player3.transform.position; }
-        }
+        RefreshOffset();
     }
 
     void Update()
@@ -38,23 +21,21 @@ public class Cam1 : MonoBehaviour
 
     void LateUpdate()
     {
-        if (GameController.instance.score < 10000)
-        {
-            if (player == null) { return; }
-            else
-            { transform.position = player.transform.position + offset; }
-        }
-        else if ((GameController.instance.score > 10000) && (GameController.instance.score < 100000))
-        {
-            if (player2 == null) { return; }
-            else
-            { transform.position = player2.transform.position + offset; }
-        }
-        else if (GameController.instance.score > 100000)
-        {
-            if (player3 == null) { return; }
-            else
-            { transform.position = player3.transform.position + offset; }
-        }
+        if (player.activeSelf)
+            transform.position = player.transform.position + offset;
+        if (player2.activeSelf)
+            transform.position = player2.transform.position + offset;
+        if (player3.activeSelf)
+            transform.position = player3.transform.position + offset;
+    }
+
+    private void RefreshOffset()
+    {
+        if (player.activeSelf)
+           offset = transform.position - player.transform.position;
+        if (player2.activeSelf)
+           offset = transform.position - player2.transform.position;
+        if (player3.activeSelf)
+            offset = transform.position - player3.transform.position;
     }
 }

@@ -34,10 +34,10 @@ public class GameController : MonoBehaviour
     [HideInInspector] public SecureInt score;
     [HideInInspector] public SecureInt bestscore;
     [HideInInspector] public SecureInt destrAster;
-    [HideInInspector] public int diff;
+    [HideInInspector] public int difficulty;
     [Header("Triggers")]
     [HideInInspector] public bool Restart;
-    [HideInInspector] public bool isStarted = false;  // изначально игра не запущена
+    [HideInInspector] public bool isStarted = false;
     [HideInInspector] public bool ControlType;
     [HideInInspector] public int inv;
     [Header("GameObjects")]
@@ -242,17 +242,17 @@ public class GameController : MonoBehaviour
     {
         if (scrollbar.value == 0)
         {
-            diff = 0;  // easy
+            difficulty = 0;
             DiffMode.text = "easy mode";
             DiffModeMenu.text = "Easy";
         } else if (scrollbar.value > 0 && scrollbar.value < 1)
         {
-            diff = 1;  // normal
+            difficulty = 1;
             DiffMode.text = "normal mode";
             DiffModeMenu.text = "Normal";
         } else if (scrollbar.value == 1)
         {
-            diff = 2; // hard
+            difficulty = 2;
             DiffMode.text = "hard mode";
             DiffModeMenu.text = "Hard";
         }
@@ -287,6 +287,27 @@ public class GameController : MonoBehaviour
             score = int.Parse(scoreCheat.text);
             destrAster = int.Parse(AsterCheat.text); }
         }
+    }
+
+    public void GameOver(float scale)
+    {
+        score -= (int)(10 * scale);
+        isStarted = false;
+        RestartText.text = "Tap to restart";
+        Restart = true;
+    }
+
+    public void GameOver()
+    {
+        isStarted = false;
+        RestartText.text = "Tap to restart";
+        Restart = true;
+    }
+
+    public void IncScore(float scale)
+    {
+        score += (int)(10 * scale);
+        BestScore();
     }
 
     public void CloseVictScreen()

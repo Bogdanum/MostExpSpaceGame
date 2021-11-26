@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DeathSphere : MonoBehaviour
 {
@@ -9,12 +7,9 @@ public class DeathSphere : MonoBehaviour
 
     void Start()
     {
-        if (GameController.instance.score > 4000)
-        {
-            var DeathSphere = GetComponent<Rigidbody>();
-            var speed = Random.Range(minSpeed, maxSpeed);
-            DeathSphere.velocity = new Vector3(0, 0, -speed);
-        }
+        var DeathSphere = GetComponent<Rigidbody>();
+        var speed = Random.Range(minSpeed, maxSpeed);
+        DeathSphere.velocity = new Vector3(0, 0, -speed);
     }
 
 
@@ -28,10 +23,8 @@ public class DeathSphere : MonoBehaviour
         if (other.tag == "Player" || other.tag == "SpaceFighter2" || other.tag == "SpaceFighter3")
         {
             Instantiate(playerExpl, other.transform.position, Quaternion.identity);
-            GameController.instance.isStarted = false;
-            GameController.instance.RestartText.text = "Tap to restart";
-            GameController.instance.Restart = true;
-            Destroy(other.gameObject); // уничтожаем корабль
+            GameController.instance.GameOver();
+            Destroy(other.gameObject);
         }
         Destroy(gameObject);
     }

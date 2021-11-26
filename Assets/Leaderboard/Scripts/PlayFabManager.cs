@@ -12,7 +12,7 @@ public class PlayFabManager : MonoBehaviour
 {
     #region UI
 
-            #region Окно ввода для ввода ника
+            #region Окно ввода ника
 
                 [Header("Окно ввода ника")] public GameObject inputName;
                 [Header("Элементы окна ввода ника")]
@@ -572,7 +572,8 @@ public class PlayFabManager : MonoBehaviour
         result => {
             foreach (var player in result.Leaderboard)
             {
-                StartCoroutine(AddAvatarToDictionary(player.PlayFabId));
+                //StartCoroutine(AddAvatarToDictionary(player.PlayFabId));
+                AddAvatarToDictionary(player.PlayFabId);
                 StartCoroutine(AddCountryToDictionary(player.PlayFabId));
             }
             ControlBlockPanel.SetActive(false);
@@ -580,9 +581,9 @@ public class PlayFabManager : MonoBehaviour
         error => { ControlBlockPanel.SetActive(false); });
     }
 
-    private IEnumerator AddAvatarToDictionary(string playfabID)
+    private void AddAvatarToDictionary(string playfabID)
     {
-        bool trigger = false;
+       // bool trigger = false;
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
         {
             PlayFabId = playfabID,
@@ -593,16 +594,16 @@ public class PlayFabManager : MonoBehaviour
             if (result.Data != null && result.Data.ContainsKey("StatusID"))
             {
                 avatarStorage.Add(playfabID, int.Parse(result.Data["StatusID"].Value));
-                trigger = true;
+                //trigger = true;
             }
             else
             {
                 avatarStorage.Add(playfabID, 0);
-                trigger = true;
+                //trigger = true;
             }
         },
         error => { Debug.LogError("Ошибка добавнения аватара в коллекцию -------- PlayFabID: " + playfabID); });
-        yield return trigger == true;
+//        yield return trigger == true;
     }
 
     void GetUserAvatarID(string PlayfabID)

@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class ReloadBonus : MonoBehaviour
 {
     public float minSpeed, maxSpeed;
@@ -9,22 +8,23 @@ public class ReloadBonus : MonoBehaviour
     
     void Start()
     {
-        if (GameController.instance.score > 4000)
-        {
-            var RelBonus = GetComponent<Rigidbody>();
-            var speed = Random.Range(minSpeed, maxSpeed);
-            RelBonus.velocity = new Vector3(0, 0, -speed);
-        }
+        var RelBonus = GetComponent<Rigidbody>();
+        var speed = Random.Range(minSpeed, maxSpeed);
+        RelBonus.velocity = new Vector3(0, 0, -speed);
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Asteroid" || other.tag == "GameBoundary" || other.tag == "RelBonus" || other.tag == "Lazer")
+        {
+            return;
+        }
         if (other.tag == "Player" || other.tag == "SpaceFighter2" || other.tag == "SpaceFighter3")
         {
             Instantiate(BonusExpl, transform.position, Quaternion.identity);
 
-            if (GameController.instance.diff == 0)
+            if (GameController.instance.difficulty == 0)
             { if (PlayerScript.shotDelay > 0.4f)
                 {
                     PlayerScript.shotDelay -= 0.04f;
@@ -35,7 +35,7 @@ public class ReloadBonus : MonoBehaviour
                 {
                     PlayerScript.shotDelay -= 0;
                 }
-            } else if (GameController.instance.diff == 1)
+            } else if (GameController.instance.difficulty == 1)
             {
                 if (PlayerScript.shotDelay > 0.4f)
                 {
@@ -49,7 +49,7 @@ public class ReloadBonus : MonoBehaviour
                 {
                     PlayerScript.shotDelay -= 0;
                 }
-            } else if (GameController.instance.diff == 2)
+            } else if (GameController.instance.difficulty == 2)
             {
                 if (PlayerScript.shotDelay > 0.4f)
                 {
@@ -68,9 +68,5 @@ public class ReloadBonus : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.tag == "Asteroid" || other.tag == "GameBoundary" || other.tag == "RelBonus" || other.tag == "Lazer") {
-
-            return;
-        }
     }
 }

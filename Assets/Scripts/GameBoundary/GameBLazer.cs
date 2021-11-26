@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameBLazerScript : MonoBehaviour
+public class GameBLazer : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

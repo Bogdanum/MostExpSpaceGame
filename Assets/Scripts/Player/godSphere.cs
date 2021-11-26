@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class godSphere : MonoBehaviour
+public class GodSphere : MonoBehaviour
 {
     public float tilt;
 

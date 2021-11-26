@@ -1,7 +1,17 @@
+Unity Editor version:    2020.3.20f1 (41c4e627c95f)
+Branch:                  2020.3/staging
+Build type:              Release
+Batch mode:              YES
+macOS version:           Version 12.0.1 (Build 21A559)
+Darwin version:          21.1.0
+Architecture:            x86_64
+Running under Rosetta:   YES
+Available memory:        8192 MB
 Using pre-set license
+Pro License: NO
 
- COMMAND LINE ARGUMENTS:
-/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/MacOS/Unity
+COMMAND LINE ARGUMENTS:
+/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MacOS/Unity
 -adb2
 -batchMode
 -noUpm
@@ -12,65 +22,130 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-53044
+49743
 Successfully changed project path to: /Users/bogdan/Bogdanum Games/SpaceSurvival3D
 /Users/bogdan/Bogdanum Games/SpaceSurvival3D
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 38.47 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 41.41 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2020.3.13f1 (71691879b7f5)
-[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Resources/UnitySubsystems
+Initialize engine version: 2020.3.20f1 (41c4e627c95f)
+[Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Resources/UnitySubsystems
 [Subsystems] Discovering subsystems at path /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets
 GfxDevice: creating device client; threaded=0
-2021-10-11 18:57:04.098 Unity[14276:262726] (null) preferred device: Apple M1 (high power)
-2021-10-11 18:57:04.098 Unity[14276:262726] Metal devices available: 1
-2021-10-11 18:57:04.099 Unity[14276:262726] 0: Apple M1 (high power)
-2021-10-11 18:57:04.099 Unity[14276:262726] Using device Apple M1 (high power)
+2021-11-22 16:58:00.662 Unity[1550:65052] (null) preferred device: Apple M1 (high power)
+2021-11-22 16:58:00.662 Unity[1550:65052] Metal devices available: 1
+2021-11-22 16:58:00.662 Unity[1550:65052] 0: Apple M1 (high power)
+2021-11-22 16:58:00.662 Unity[1550:65052] Forcing user selected device: Apple M1 (high power)
 Initializing Metal device caps: Apple M1
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
 Initialize mono
-Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Managed'
-Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
-Mono config path = '/Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
+Mono path[0] = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Managed'
+Mono path[1] = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56550
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
-Register platform support module: /Applications/Unity/Hub/Editor/2020.3.13f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001583 seconds.
-Native extension for WindowsStandalone target not found
+Register platform support module: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Registered in 0.000981 seconds.
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 36.18 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 40.90 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.174 seconds
+- Completed reload, in  2.633 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2633ms)
+		BeginReloadAssembly (85ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (3ms)
+		EndReloadAssembly (868ms)
+			LoadAssemblies (84ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (178ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (504ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (9ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (41ms)
+				BeforeProcessingInitializeOnLoad (68ms)
+				ProcessInitializeOnLoadAttributes (281ms)
+				ProcessInitializeOnLoadMethodAttributes (103ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.004766 seconds.
+Registered in 0.003573 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/Photon/PhotonLibs/netstandard2.0/Photon3Unity3D.dll
-Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
-Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.52 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  2.498 seconds
+- Completed reload, in  2.384 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2385ms)
+		BeginReloadAssembly (260ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (30ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (33ms)
+		EndReloadAssembly (2032ms)
+			LoadAssemblies (200ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (350ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (60ms)
+			SetupLoadedEditorAssemblies (1179ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (13ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (202ms)
+				ProcessInitializeOnLoadAttributes (942ms)
+				ProcessInitializeOnLoadMethodAttributes (20ms)
+				AfterProcessingInitializeOnLoad (1ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (28ms)
 Platform modules already initialized, skipping
+Validating Project structure ... 0.010748 seconds.
+Shader import version has changed; will reimport all shaders...
+Upgrading shader files ...0.019606 seconds.
+Application.AssetDatabase Initial Script Refresh Start
+RefreshInfo: InitialScriptRefreshV2(NoUpdateAssetOptions) scanfilter:  ... 1 filters
+RefreshProfiler: Total: 0.000ms
+Application.AssetDatabase Initial Script Refresh End
+Application.AssetDatabase.Refresh Start
+Application.AssetDatabase.Refresh End
+RefreshInfo: StopAssetImportingV2(ForceSynchronousImport) scanfilter: 
+RefreshProfiler: Total: 0.000ms
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Launching external process: /Applications/Unity/Hub/Editor/2020.3.20f1/Unity.app/Contents/Tools/UnityShaderCompiler
+Launched and connected shader compiler UnityShaderCompiler after 0.02 seconds
+Initializing Unity extensions:
+2021-11-22 16:58:06.903 Unity[1550:65052] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600002b18460 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
+2021-11-22 16:58:06.907 Unity[1550:65052] NSEventModifierFlagFunction specified to -setKeyEquivalentModifierMask: for item <NSMenuItem: 0x600002b01730 Font Asset, ke='Command-F12'>, but is only supported for system-provided menu items; will not be used
 ========================================================================
 Worker process is ready to serve import requests
 Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
 Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
-Launching external process: /Applications/Unity/Hub/Editor/2020.3.13f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.04 seconds
-Refreshing native plugins compatible for Editor in 0.44 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 0.49 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1872 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 179.2 MB.
-System memory in use after: 179.3 MB.
+Unloading 1882 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 234.4 MB.
+System memory in use after: 233.5 MB.
 
-Unloading 37 unused Assets to reduce memory usage. Loaded Objects now: 2292.
-Total: 1.684542 ms (FindLiveObjects: 0.113959 ms CreateObjectMapping: 0.034916 ms MarkObjects: 1.464792 ms  DeleteObjects: 0.070209 ms)
+Unloading 325 unused Assets to reduce memory usage. Loaded Objects now: 2343.
+Total: 3.462750 ms (FindLiveObjects: 0.244542 ms CreateObjectMapping: 0.044083 ms MarkObjects: 2.592333 ms  DeleteObjects: 0.580417 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
@@ -84,96 +159,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  path: Assets/Res/ballcatcher/ballcatcher.png
-  artifactKey: Guid(6fedb823de79e40c0a76810b3edb12b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.png using Guid(6fedb823de79e40c0a76810b3edb12b4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '189c1c567a8017f5c247102898ed0930') in 0.535196 seconds 
-  Import took 0.538086 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000258 seconds.
-  path: Assets/Res/ballcatcher
-  artifactKey: Guid(282a5a4ff1d58471493328a3a7f16c19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher using Guid(282a5a4ff1d58471493328a3a7f16c19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5641d9fa68ebe9d6a98ea4a19adc6ce') in 0.001435 seconds 
-  Import took 0.004140 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.obj
-  artifactKey: Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.obj using Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c3570ab078b270583ccc7eb0e7daba5') in 1.060211 seconds 
-  Import took 1.062323 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 29.782441 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.obj
-  artifactKey: Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.obj using Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9af1703c4fcd03af6707d145c328b5f') in 0.047576 seconds 
-  Import took 0.050239 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 37.878560 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.obj
-  artifactKey: Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.obj using Guid(ea8643e0031524117bdc5ae24acdfd24) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '006c0defafea1d19ad869055f0d1b30e') in 0.017460 seconds 
-  Import took 0.020319 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.773465 seconds.
-  path: Assets/Res/ballcatcher/Materials/ballcatcher.mat
-  artifactKey: Guid(633048eca189444929e5ffd841fa227b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/Materials/ballcatcher.mat using Guid(633048eca189444929e5ffd841fa227b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'afd4d6f87298efededec1a87c24bd62a') in 0.404446 seconds 
-  Import took 0.408033 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.911381 seconds.
-  path: Assets/Res/ballcatcher/Materials
-  artifactKey: Guid(b8dc9f875c9c14470bbd4232ec187fe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/Materials using Guid(b8dc9f875c9c14470bbd4232ec187fe0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd4ec324b9e8a7834dd29ffe4f00a7f03') in 0.003016 seconds 
-  Import took 0.006794 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 157.423580 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.mtl
-  artifactKey: Guid(493b4c18bb79140b1b3e5a7e8b00947c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.mtl using Guid(493b4c18bb79140b1b3e5a7e8b00947c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77440b32048c8e15cdca21909eea0068') in 0.233791 seconds 
-  Import took 0.247314 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1935.764846 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.vox.obj
-  artifactKey: Guid(c2f916449e7154dcabd6c4e31ea0342e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.vox.obj using Guid(c2f916449e7154dcabd6c4e31ea0342e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b49eba808544d3e3dc3563455301ecf') in 0.056792 seconds 
-  Import took 0.065677 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000430 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.vox.png
-  artifactKey: Guid(7d8c0775e3b0c411a845984586e604a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.vox.png using Guid(7d8c0775e3b0c411a845984586e604a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cd8dd7b83162737a83d5cf45507e30b') in 0.008677 seconds 
-  Import took 0.011242 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 65.717009 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.vox.mtl
-  artifactKey: Guid(517a5a99b1e5140b2b09c977d3b96719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.vox.mtl using Guid(517a5a99b1e5140b2b09c977d3b96719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c2c10fe59614b644b2e44538e693dda5') in 0.006215 seconds 
-  Import took 0.010531 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 182.741743 seconds.
-  path: Assets/Res/ballcatcher/ballcatcher.vox.obj
-  artifactKey: Guid(c2f916449e7154dcabd6c4e31ea0342e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Res/ballcatcher/ballcatcher.vox.obj using Guid(c2f916449e7154dcabd6c4e31ea0342e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97853da45f24d25ccfd22d6a0eb96ac5') in 0.150276 seconds 
-  Import took 0.201474 seconds .
+  path: Assets/Leaderboard/Scripts/PlayFabManager.cs
+  artifactKey: Guid(2d8c8993dea204c08983230497190bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Leaderboard/Scripts/PlayFabManager.cs using Guid(2d8c8993dea204c08983230497190bdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0cdc77a89962ac4de5c9d499213a3f7') in 0.109413 seconds 
+  Import took 0.112753 seconds .
 

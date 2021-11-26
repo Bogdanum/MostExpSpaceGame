@@ -1,40 +1,39 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BigAsterEmmiterScript : MonoBehaviour
+public class BigAsterEmmiter : MonoBehaviour
 {
-    public GameObject BigAster;
-    public GameObject BigAsterV2;
-
-    public float minDelay, maxDelay; // задержка между запусками
-    float nextLaunchTime;
-    public bool x = true;
+    public  GameObject BigAster;
+    public  GameObject BigAsterV2;
+    public  float minDelay, maxDelay;
+    private float nextLaunchTime;
+    private bool asterTypeTrigger = true;
 
     void Update()
     {
         if (GameController.instance.isStarted == false)
         {
-            return;  // останов эммитера, если игра окончена
+            return;
         }
-       
+        ReleaseAsteroid();
+    }
+
+    private void ReleaseAsteroid()
+    {
         if (Time.time > nextLaunchTime)
         {
-            x = !x;
-            // запуск астероидов
+            asterTypeTrigger = !asterTypeTrigger;
             float PosY = transform.position.y;
             float PosZ = transform.position.z;
             float PosX = transform.position.x;
 
-            if (x == true)
+            if (asterTypeTrigger)
             {
                 Instantiate(BigAster, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
             }
-            else if (x == false)
+            else if (!asterTypeTrigger)
             {
                 Instantiate(BigAsterV2, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
             }
-
             nextLaunchTime = Time.time + Random.Range(minDelay, maxDelay);
         }
     }

@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class BigAsteroidScript : MonoBehaviour
+public class BigAsteroid : MonoBehaviour
 {
-    public float rotation;
     public float speed;
     float scale;
     
@@ -19,7 +16,6 @@ public class BigAsteroidScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.tag == "GameBoundary")
         {
             return;

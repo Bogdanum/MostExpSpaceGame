@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class lazerScript : MonoBehaviour
+[RequireComponent(typeof(Rigidbody))]
+public class LaserShot : MonoBehaviour
 {
     public float speed;
     void Start()

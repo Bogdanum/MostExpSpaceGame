@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class SettingsPanel : MonoBehaviour
 {
-    public Scrollbar scrollbar;
+    public Scrollbar qualityLevel;
     public Text scrollbarText;
     public Text SoundText;
 
@@ -19,35 +17,46 @@ public class SettingsPanel : MonoBehaviour
 
     private void Awake()
     {
-            scrollbar.value = PlayerPrefs.GetFloat("SaveQuality", 1);
-            Sound.value = PlayerPrefs.GetFloat("SaveSound", 1);
+        qualityLevel.value = PlayerPrefs.GetFloat("SaveQuality", 1);
+        Sound.value = PlayerPrefs.GetFloat("SaveSound", 1);
     }
     void Start()
     {
-        if (scrollbar.value == 0)
+        SetupQuality();
+        SetupSound();
+    }
+
+    private void SetupQuality()
+    {
+        if (qualityLevel.value == 0)
         {
             QualitySettings.SetQualityLevel(0, true);
             scrollbarText.text = "Low";
-        } else if (scrollbar.value == 0.5f)
+        }
+        else if (qualityLevel.value == 0.5f)
         {
             QualitySettings.SetQualityLevel(2, true);
             scrollbarText.text = "Medium";
-        } else if (scrollbar.value == 1)
+        }
+        else if (qualityLevel.value == 1)
         {
             QualitySettings.SetQualityLevel(5, true);
             scrollbarText.text = "Ultra";
         }
+    }
 
-       if (Sound.value == 0)
+    private void SetupSound()
+    {
+        if (Sound.value == 0)
         {
             Mixer.audioMixer.SetFloat("MasterVolume", -80);
             SoundText.text = "OFF";
-        } else if (Sound.value == 1)
+        }
+        else if (Sound.value == 1)
         {
             Mixer.audioMixer.SetFloat("MasterVolume", 0);
             SoundText.text = "ON";
         }
-
     }
 
     public void QuitGame()
@@ -57,25 +66,25 @@ public class SettingsPanel : MonoBehaviour
 
     public void QualityLevel()
     {
-        if (scrollbar.value == 0)
+        if (qualityLevel.value == 0)
         {
-            scrollbar.value = 0;
+            qualityLevel.value = 0;
             QualitySettings.SetQualityLevel(0, true);
             scrollbarText.text = "Low";
         }
-        else if (scrollbar.value > 0 && scrollbar.value < 1)
+        else if (qualityLevel.value > 0 && qualityLevel.value < 1)
         {
-            scrollbar.value = 0.5f;
+            qualityLevel.value = 0.5f;
             QualitySettings.SetQualityLevel(2, true);
             scrollbarText.text = "Medium";
         }
-        else if (scrollbar.value == 1)
+        else if (qualityLevel.value == 1)
         {
-            scrollbar.value = 1;
+            qualityLevel.value = 1;
             QualitySettings.SetQualityLevel(5, true);
             scrollbarText.text = "Ultra";
         }
-        PlayerPrefs.SetFloat("SaveQuality", scrollbar.value);
+        PlayerPrefs.SetFloat("SaveQuality", qualityLevel.value);
     }
 
     public void ToggleMusic()
