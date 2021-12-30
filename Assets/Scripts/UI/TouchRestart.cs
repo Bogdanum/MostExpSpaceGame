@@ -11,7 +11,7 @@ public class TouchRestart : MonoBehaviour
     {
         RestartText.color = new Color(RestartText.color.r, RestartText.color.g, RestartText.color.b, Mathf.PingPong(Time.time, 1.0f));
 
-        if (GameController.instance.Restart == true)
+        if (GameController.Restart)
         {
             hideMenu = 1;
             PlayerPrefs.SetInt("firstInGame", hideMenu);

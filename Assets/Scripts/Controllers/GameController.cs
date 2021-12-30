@@ -1,321 +1,293 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 
-
-public class GameController : MonoBehaviour
+public class GameController : Singleton<GameController>
 {
-    [Header("UI Elements")]
-    public Image menu;
-    public Button touchRestart;
-    public Button startButton;
-    public Scrollbar scrollbar;
-    public Scrollbar ContrType;
-    public Text RestartText;
-    public InputField inputField;
-    public Text Reload;
-    [Header("TextForTranslate")]
-    public Text DiffMode;
-    public Text DiffModeMenu;
-    public Text BestScoreText;
-    public Text DestrAstrText;
-    public Text BstScoreText;
-    public Text ScoreLabelText;
-    public Text ContrTypeText;
-    [HideInInspector] public string ReloadText;
-    [HideInInspector] public string scoreText;
-    [HideInInspector] public string bestScoreGameText;
-    [HideInInspector] public string betstScoreMenuText;
-    [HideInInspector] public string destrAsterText;
-    [Header("Stats")]
-    [HideInInspector] public SecureInt score;
-    [HideInInspector] public SecureInt bestscore;
-    [HideInInspector] public SecureInt destrAster;
-    [HideInInspector] public int difficulty;
-    [Header("Triggers")]
-    [HideInInspector] public bool Restart;
-    [HideInInspector] public bool isStarted = false;
-    [HideInInspector] public bool ControlType;
-    [HideInInspector] public int inv;
-    [Header("GameObjects")]
-    public GameObject Menu;
-    public GameObject SpaceFighter1;
-    public GameObject SpaceFighter2;
-    public GameObject SpaceFighter3;
-    public GameObject sphere;
-    public GameObject sphere2;
-    public GameObject circle;
-    public GameObject circle2;
+#region Values
+    private static SecureInt _score;
+    private static SecureInt _destrAster;
+    private static int _difficulty;
+    public static readonly int targetScoreBonus = 4000;
+    public static readonly int targetScoreLevel2 = 10000;
+    public static readonly int targetScoreLevel3 = 100000;
+#endregion
+#region Triggers
+    private static bool _restart;
+    private static bool _isStarted = false;
+    private static bool _controlType;
+    private static bool _unbreakable = false;
+    private bool level2Trigger = true;
+    private bool level3Trigger = true;
+#endregion 
     public GameObject VictoryScreen;
-    public GameObject BGSound;
-    public GameObject SpaceFighters;
 
-    [Header("Поля чит-меню")]
-    [SerializeField] private InputField scoreCheat;
-    [SerializeField] private InputField AsterCheat;
+    [SerializeField] private UIMediator uIMediator;
+    [SerializeField] private PlayerShipSpawner shipSpawner;
 
-    [Header("Лидерборд")]
-    public PlayFabManager playFabManager;
+    public event Action<int> OnBestScoreUpdate = default;
+    public event Action<int> OnDestrAsterUpdate = default;
 
-    public static GameController instance;
-
-
-    private void Awake()
+    public static SecureInt Score
     {
-        instance = this;
-
-#if UNITY_ANDROID
-        ContrType.value = PlayerPrefs.GetFloat("SaveControl", 0);
-#elif UNITY_EDITOR
-        ContrType.value = PlayerPrefs.GetFloat("SaveControl", 1);
-#elif UNITY_IOS
-        ContrType.value = PlayerPrefs.GetFloat("SaveControl", 0);
-#endif
-
-        if (PlayerPrefs.HasKey("SaveScore"))
-        {
-            bestscore = PlayerPrefs.GetInt("SaveScore");
-            touchRestart.gameObject.SetActive(false);
+        get { return _score; }
+        private set {
+            if (value < 0) _score = 0;
+            else _score = value;
         }
-
-        if (PlayerPrefs.HasKey("SaveDestr"))
-        {
-            destrAster = PlayerPrefs.GetInt("SaveDestr");
+    }
+    public static SecureInt DestroyedAsteroids
+    {
+        get { return _destrAster; }
+        set {
+            if (value < 0) _destrAster = 0;
+            else _destrAster = value;
         }
-
-        if (ContrType.value < 0.5f)
-        {
-            ContrTypeText.text = "Swipe";
-            ControlType = true;
-        }
-        else if (ContrType.value > 0.5f)
-        {
-            ContrTypeText.text = "Buttons";
-            ControlType = false;
-
-        }
-
+    }
+    public static int Difficulty
+    {
+        get { return _difficulty; }
+        private set { _difficulty = value; }
+    }
+    public static bool ControlType
+    {
+        get { return _controlType; }
+        private set { _controlType = value; }
+    }
+    public static bool IsStarted
+    {
+        get { return _isStarted; }
+        private set { _isStarted = value; }
+    }
+    public static bool Restart
+    {
+        get { return _restart; }
+        private set { _restart = value; }
+    }
+    public static bool Unbreakable
+    {
+        get { return _unbreakable; }
+        private set { _unbreakable = value; }
     }
 
-    public void GetScoreTexts()
+    protected override void Awake()
     {
-        ReloadText = Reload.text;
-        scoreText = ScoreLabelText.text;
-        betstScoreMenuText = BestScoreText.text;
-        bestScoreGameText = BstScoreText.text;
-        destrAsterText = DestrAstrText.text;
+        base.Awake();
+
+        SubscribeSettingsScrollbars();
+
+        DestroyedAsteroids = PlayerData.DestrAster;
+        ControlType = PlayerData.ControlType < .5f ? true : false;
+    }
+
+    private void SubscribeSettingsScrollbars()
+    {
+        SettingsUI settingsUI = uIMediator.GetSettingsUI();
+        settingsUI.OnControlTypeChange += SetControlType;
+        settingsUI.OnDifficultyChange += SetDifficultyLevel;
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+        SettingsUI settingsUI = uIMediator.GetSettingsUI();
+        settingsUI.OnControlTypeChange -= SetControlType;
+        settingsUI.OnDifficultyChange -= SetDifficultyLevel;
+    }
+
+    private void SetControlType(bool isMobileInputType) {
+        ControlType = isMobileInputType;
+    }
+
+    private void SetDifficultyLevel(int level){
+        Difficulty = level;
+        if (level == 0) {
+            uIMediator.SetDifficultyMode("easy mode");
+        } else if (level == 1) {
+            uIMediator.SetDifficultyMode("hard mode");
+        } else{
+            uIMediator.SetDifficultyMode("normal mode");
+        }
     }
 
     void Start()
     {
-        circle.SetActive(false);
-        circle2.SetActive(false);
-        inv = 1;
-
+        Init();
 
         if (TouchRestart.hideMenu == 1)
         {
             if (PlayerPrefs.HasKey("firstInGame"))
             {
                 TouchRestart.hideMenu = PlayerPrefs.GetInt("firstInGame");
-                Menu.SetActive(false);
-                isStarted = true;
-                PlayerScript.shotDelay = 0.5f;
+                uIMediator.HideMenuView();
+                IsStarted = true;
             }
         }
 
-        Restart = false;
-
-        RestartText.text = "";
-
-        startButton.onClick.AddListener(delegate {
-
-            menu.gameObject.SetActive(false);
-            VictoryScreen.gameObject.SetActive(false);
-            isStarted = true;
-        });
     }
 
+    private void Init()
+    {
+        Score = 0;
+        Restart = false;
+        Unbreakable = false;
+
+        shipSpawner.SpawnPlayerShip(1);
+    }
 
     void Update()
     {
-
-        if ((ReloadText != "") || (scoreText != "") || (betstScoreMenuText != "") || (bestScoreGameText != "") || (destrAsterText != ""))
-        {
-            Reload.text = ReloadText + " " + Math.Round(PlayerScript.shotDelay, 2);
-            ScoreLabelText.text = scoreText + " " + score;
-            BestScoreText.text = betstScoreMenuText + " " + bestscore;
-            BstScoreText.text = bestScoreGameText + " " + bestscore;
-            DestrAstrText.text = destrAsterText + " " + destrAster;
-        }
+        uIMediator.UpdateHudBestScore(PlayerData.BestScore);
+        uIMediator.UpdateBestScore(PlayerData.BestScore);
+        uIMediator.UpdateCurrentScore(Score);
+        uIMediator.UpdateDestrAster(DestroyedAsteroids);
 
         if (Restart)
-        {
-            touchRestart.gameObject.SetActive(true);
-        }
-
-        if (score > 2147483500)
-        {
-            // экран победы
-            isStarted = false;
-            SpaceFighters.SetActive(false);
-            bestscore = 1337;
-            PlayerPrefs.SetInt("SaveScore", bestscore);
-            if (VictoryScreen.gameObject.activeSelf == true) { return; } else { VictoryScreen.gameObject.SetActive(true); }
-        }
-
-        if (score >= 10000 && score < 100000)
-        {
-            if (inv == 1)
-            {
-                // включаем неуязвимость на 8 секунд
-                inv = 0;
-                SpaceFighter1.SetActive(false);
-                SpaceFighter2.SetActive(true);
-                sphere.SetActive(true);
-                StartCoroutine(ExecuteAfterTime(8));
-            }
-            else return;
-        }
-
-        if (score >= 100000)
-        {
-            SpaceFighter3.SetActive(true);
-            if (SpaceFighter1.activeSelf == true) { SpaceFighter1.SetActive(false); }
-            if (inv == 2)
-            {
-                // включаем неуязвимость на 8 секунд
-                inv = 0;
-                SpaceFighter2.SetActive(false);
-                sphere2.SetActive(true);
-                StartCoroutine(ExecuteAfterTimeTwo(8));
-            }
-            else return;
-        }
-
+            uIMediator.ShowTouchRestart();
     }
 
-    public IEnumerator ExecuteAfterTime(float timeInSec)
+    public static void SetCheatStats(int score, int asteroids)
     {
-        yield return new WaitForSeconds(timeInSec);
-        inv = 2;
-        sphere.SetActive(false);
-        if (circle.activeSelf == true)
-        {
-            circle.SetActive(false);
-        }
-
-    }
-
-    public IEnumerator ExecuteAfterTimeTwo(float timeInSec)
-    {
-        yield return new WaitForSeconds(timeInSec);
-        inv = 3;
-        sphere2.SetActive(false);
-        if (circle2.activeSelf == true)
-        {
-            circle2.SetActive(false);
-        }
-    }
-
-    public void BestScore()
-    {
-        if (score > bestscore)
-        {
-            bestscore = score;
-            PlayerPrefs.SetInt("SaveScore", bestscore);
-            playFabManager.SendLeaderboard(bestscore);
-        }
-    }
-
-    public void DestrAster()
-    {
-        destrAster += 1;
-        playFabManager.SendAsterLeaderboard(destrAster);
-        PlayerPrefs.SetInt("SaveDestr", destrAster);
-    }
-
-    public void Difficulty()
-    {
-        if (scrollbar.value == 0)
-        {
-            difficulty = 0;
-            DiffMode.text = "easy mode";
-            DiffModeMenu.text = "Easy";
-        } else if (scrollbar.value > 0 && scrollbar.value < 1)
-        {
-            difficulty = 1;
-            DiffMode.text = "normal mode";
-            DiffModeMenu.text = "Normal";
-        } else if (scrollbar.value == 1)
-        {
-            difficulty = 2;
-            DiffMode.text = "hard mode";
-            DiffModeMenu.text = "Hard";
-        }
-    }
-
-
-    public void Controll()
-    {
-        if (ContrType.value < 0.5f)
-        {
-            ContrTypeText.text = "Swipe";
-            ContrType.value = 0;
-            ControlType = true;
-        }
-        else if (ContrType.value > 0.5f)
-        {
-            ContrTypeText.text = "Buttons";
-            ContrType.value = 1;
-            ControlType = false;
-
-        }
-        PlayerPrefs.SetFloat("SaveControl", ContrType.value);
-    }
-
-    public void Cheat()
-    {
-        if (scoreCheat.text != "" && AsterCheat.text != "")
-        {
-            if (long.Parse(scoreCheat.text) > 2147483500) { score = 2147483500; }
-            else if (long.Parse(AsterCheat.text) > 2147483500) { destrAster = 2147483500; }
-            else { 
-            score = int.Parse(scoreCheat.text);
-            destrAster = int.Parse(AsterCheat.text); }
-        }
-    }
-
-    public void GameOver(float scale)
-    {
-        score -= (int)(10 * scale);
-        isStarted = false;
-        RestartText.text = "Tap to restart";
-        Restart = true;
-    }
-
-    public void GameOver()
-    {
-        isStarted = false;
-        RestartText.text = "Tap to restart";
-        Restart = true;
+        Score = score;
+        DestroyedAsteroids = asteroids;
     }
 
     public void IncScore(float scale)
     {
-        score += (int)(10 * scale);
+        Score += (int)(10 * scale);
         BestScore();
+        string scoreStatus = CheckForUpgrade();
+        Debug.Log("Score status: " + scoreStatus);
     }
 
-    public void CloseVictScreen()
+    private void BestScore()
     {
-        VictoryScreen.gameObject.SetActive(false);
+        if (Score > PlayerData.BestScore)
+        {
+            uIMediator.UpdateHudBestScore(Score);
+            uIMediator.UpdateBestScore(Score);
+
+            PlayerData.SaveBestScore(Score);
+            PlayerData.Refresh();
+
+            if (OnBestScoreUpdate != null)
+                OnBestScoreUpdate(Score);
+        }
     }
 
-    public void ReloadScene(int index)
+    private string CheckForUpgrade()
+    {
+        if (isMaxScore()) return "Max score";
+        else
+        if (isLevel3()) return "Level 3";
+        else
+        if (isLevel2()) return "Level 2";
+        else
+        if (isReadyToReceiveBonus()) return "Ready to receive bonus";
+        else return " < 4000";
+    }
+
+    private bool isMaxScore()
+    {
+        if (Score > 2147483500)
+        {
+            IsStarted = false;
+            PlayerData.SaveBestScore(1337);
+            PlayerData.Refresh();
+            if (OnBestScoreUpdate != null)
+                OnBestScoreUpdate(1337);
+
+            if (!VictoryScreen.activeSelf)
+                VictoryScreen.SetActive(true);
+            return true;
+        }
+        return false;
+    }
+
+    private bool isLevel3()
+    {
+        if (Score >= targetScoreLevel3 && level3Trigger)
+        {
+            level3Trigger = false;
+            shipSpawner.SpawnPlayerShip(3);
+            Unbreakable = true;
+            ActivateShield();
+            uIMediator.ShowShieldIndicator();
+            return true;
+        }
+        return false;
+    }
+
+    private bool isLevel2()
+    {
+        if (Score >= targetScoreLevel2 && level2Trigger)
+        {
+            level2Trigger = false;
+            shipSpawner.SpawnPlayerShip(2);
+            Unbreakable = true;
+            ActivateShield();
+            uIMediator.ShowShieldIndicator();
+            return true;
+        }
+        return false;
+    }
+
+    private void ActivateShield()
+    {
+        GameObject currentShip = shipSpawner.GetCurrentShip();
+        WeaponSystem shipWS = currentShip.GetComponent<WeaponSystem>();
+
+        shipWS.ActivateShield();
+        StartCoroutine(DisableShieldAfterTime(shipWS));
+    }
+
+    private IEnumerator DisableShieldAfterTime(WeaponSystem shipWS)
+    {
+        yield return new WaitForSeconds(shipWS.GetShieldTime());
+
+        Unbreakable = false;
+        shipWS.DisableShield();
+        uIMediator.HideShieldIndicator();
+    }
+
+    private bool isReadyToReceiveBonus()
+    {
+        if (Score >= targetScoreBonus)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void DestrAster()
+    {
+        DestroyedAsteroids += 1;
+        if (OnDestrAsterUpdate != null)
+            OnDestrAsterUpdate(DestroyedAsteroids);
+        PlayerData.SaveDestrAsterCount(DestroyedAsteroids);
+        PlayerData.Refresh();
+    }
+
+    public static void StartGame()
+    {
+        IsStarted = true;
+    }
+
+    public static void GameOver(float scale)
+    {
+        Score -= (int)(10 * scale);
+        IsStarted = false;
+        Restart = true;
+    }
+
+    public static void GameOver()
+    {
+        IsStarted = false;
+        Restart = true;
+    }
+
+    public static void ReloadScene(int index)
     {
         SceneManager.LoadScene(index);
     }

@@ -1,16 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class BigAsterEmmiter : MonoBehaviour
 {
-    public  GameObject BigAster;
-    public  GameObject BigAsterV2;
-    public  float minDelay, maxDelay;
+    [SerializeField] private List<GameObject> bigAsteroidsVariants;
+    [SerializeField] private float minDelay, maxDelay;
     private float nextLaunchTime;
-    private bool asterTypeTrigger = true;
+    private int variantID;
 
     void Update()
     {
-        if (GameController.instance.isStarted == false)
+        if (!GameController.IsStarted)
         {
             return;
         }
@@ -21,19 +21,14 @@ public class BigAsterEmmiter : MonoBehaviour
     {
         if (Time.time > nextLaunchTime)
         {
-            asterTypeTrigger = !asterTypeTrigger;
+            variantID = Random.Range(0, bigAsteroidsVariants.Count);
+
             float PosY = transform.position.y;
             float PosZ = transform.position.z;
             float PosX = transform.position.x;
 
-            if (asterTypeTrigger)
-            {
-                Instantiate(BigAster, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
-            }
-            else if (!asterTypeTrigger)
-            {
-                Instantiate(BigAsterV2, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
-            }
+            Instantiate(bigAsteroidsVariants[variantID], new Vector3(PosX, PosY, PosZ), Quaternion.identity);
+
             nextLaunchTime = Time.time + Random.Range(minDelay, maxDelay);
         }
     }

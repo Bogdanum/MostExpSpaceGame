@@ -20,10 +20,10 @@ public class DeathSphere : MonoBehaviour
             return;
         }
 
-        if (other.tag == "Player" || other.tag == "SpaceFighter2" || other.tag == "SpaceFighter3")
+        if (other.tag == "Player")
         {
             Instantiate(playerExpl, other.transform.position, Quaternion.identity);
-            GameController.instance.GameOver();
+            GameController.GameOver();
             Destroy(other.gameObject);
         }
         Destroy(gameObject);

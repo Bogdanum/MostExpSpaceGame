@@ -116,17 +116,17 @@ public class PhotonConnector : MonoBehaviourPunCallbacks
         Debug.LogWarning($"You failed to join a Photon Room {message}");
     }
 
-    public override void OnPlayerEnteredRoom(Player newPlayer)
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Debug.LogWarning($"Another player has joined the room {newPlayer.UserId}");
     }
 
-    public override void OnPlayerLeftRoom(Player otherPlayer)
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         Debug.LogWarning($"Player has left the room {otherPlayer.UserId}");
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
+    public override void OnMasterClientSwitched(Photon.Realtime.Player newMasterClient)
     {
         Debug.LogWarning($"New Master Client is {newMasterClient.UserId}");
     }

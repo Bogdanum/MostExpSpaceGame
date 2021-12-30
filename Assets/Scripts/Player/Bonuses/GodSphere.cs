@@ -4,7 +4,7 @@ public class GodSphere : MonoBehaviour
 {
     public float tilt;
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(Vector3.up * tilt);
     }

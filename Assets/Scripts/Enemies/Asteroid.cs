@@ -1,22 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Asteroid : MonoBehaviour
 {
-    public float rotation;
-    public float maxSpeed, minSpeed;
-    public GameObject asteroidExplosion;
-    public GameObject playerExplosion;
-    float scale;
-    public int hp;
+    [SerializeField] private float rotation;
+    [SerializeField] private float maxSpeed, minSpeed;
+    [SerializeField] private GameObject asteroidExplosion,
+                                        playerExplosion;
+    [SerializeField, Header("TriggerCollider")]
+                     private List<string> ignoreTags;
+    [SerializeField] private string playerTag;
+    private Rigidbody asteroid;
+    private float scale;
+    private int hp;
 
     void Start()
     {
-        var Asteroid = GetComponent<Rigidbody>();
-        Asteroid.angularVelocity = Random.insideUnitSphere * rotation;
+        asteroid = GetComponent<Rigidbody>();
+        SetAsteroidParameters();
+    }
+
+    private void SetAsteroidParameters()
+    {
+        asteroid.angularVelocity = Random.insideUnitSphere * rotation;
         var speed = Random.Range(minSpeed, maxSpeed);
-        Asteroid.velocity = new Vector3(0, 0, -speed);
+        asteroid.velocity = new Vector3(0, 0, -speed);
         scale = Random.Range(0.5f, 2);
-        Asteroid.transform.localScale *= scale;
+        asteroid.transform.localScale *= scale;
 
         if (scale > 1.5f)
         {
@@ -26,24 +36,25 @@ public class Asteroid : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Asteroid" || other.tag == "GameBoundary" || other.tag == "RelBonus" || other.tag == "GameBoundaryLazer" || other.tag == "DeathSphere")
-        {
-            return;
-        }
+        foreach (string ignoreTag in ignoreTags)
+            if (other.tag == ignoreTag) return;
+ 
         var explosion = Instantiate(asteroidExplosion, transform.position, Quaternion.identity);
         explosion.transform.localScale *= scale;
 
-        if (other.tag == "Player" || other.tag == "SpaceFighter2" || other.tag == "SpaceFighter3")
+        if (other.tag == playerTag)
         {
-            if (GameController.instance.inv == 0)
+            if (GameController.Unbreakable)
             {
                 return;
             } 
                 Instantiate(playerExplosion, other.transform.position, Quaternion.identity);
-                GameController.instance.GameOver(scale);
-                other.gameObject.SetActive(false); 
+                Destroy(other.gameObject);
+                GameController.GameOver(scale);
         }
-        GameController.instance.IncScore(scale);
+
+        GameController.Instance.IncScore(scale);
+
         if (hp > 1)
         {
             hp -= 1;
@@ -51,14 +62,14 @@ public class Asteroid : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            GameController.instance.DestrAster();
+            GameController.Instance.DestrAster();
         }      
       Destroy(other.gameObject);
     }
 
     private int GetInitialHP()
     {
-        switch (GameController.instance.difficulty)
+        switch (GameController.Difficulty)
         {
             case 0:  return 2;
             case 1:  return 4;

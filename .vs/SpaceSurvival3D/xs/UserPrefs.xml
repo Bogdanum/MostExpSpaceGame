@@ -1,21 +1,31 @@
-﻿<Properties StartupConfiguration="{1293D007-B566-BD6D-B858-4032F9E19719}|Модульные тесты">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/TouchRestart.cs">
+﻿<Properties StartupConfiguration="{A6DF3F74-7451-F098-E4B5-64C4EC4C6F81}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Controllers/AsteroidEmmiter.cs">
     <Files>
-      <File FileName="Assets/Scripts/Controllers/GameController.cs" Line="44" Column="27" />
-      <File FileName="Assets/Scripts/UI/Avatar.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/AvatarController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/AvatarGetterMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/FPSctript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/InfoScript.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/LTweenEnButtons.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/UI/Settings.cs" Line="37" Column="1" />
-      <File FileName="Assets/Scripts/UI/SettingsPanel.cs" Line="27" Column="6" />
-      <File FileName="Assets/Scripts/UI/TouchRestart.cs" Line="21" Column="55" />
+      <File FileName="Assets/Scripts/Controllers/GameController.cs" Line="274" Column="26" />
+      <File FileName="Assets/Scripts/Player/Player.cs" Line="11" Column="38" />
+      <File FileName="Assets/Scripts/Data/PlayerData.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UI/UIMediator.cs" Line="5" Column="55" />
+      <File FileName="Assets/Scripts/UI/MenuUI.cs" Line="33" Column="60" />
+      <File FileName="Assets/Scripts/UI/HudUI.cs" Line="7" Column="56" />
+      <File FileName="Assets/Scripts/UI/Settings.cs" Line="19" Column="6" />
+      <File FileName="Assets/Scripts/UI/SettingsUI.cs" />
+      <File FileName="Assets/Leaderboard/Scripts/PlayFabManager.cs" Line="83" Column="60" />
+      <File FileName="Assets/Scripts/Controllers/AsteroidEmmiter.cs" Line="25" Column="39" />
+      <File FileName="Assets/Scripts/Enemies/Asteroid.cs" Line="68" Column="6" />
+      <File FileName="Assets/Scripts/Cheat/CheatPanel.cs" />
+      <File FileName="Assets/Scripts/Player/Bonuses/ReloadBonus.cs" />
+      <File FileName="Assets/Scripts/Controllers/PlayerShipSpawner.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/Player/MovementSystem.cs" />
+      <File FileName="Assets/Scripts/Enemies/DeathSphere.cs" Line="26" Column="27" />
+      <File FileName="Assets/Scripts/Player/WeaponSystem.cs" Line="41" Column="1" />
+      <File FileName="Assets/Scripts/Controllers/shieldLoad.cs" Line="15" Column="1" />
+      <File FileName="Assets/Scripts/Enemies/BigAsteroid.cs" Line="5" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.PhotonUnityNetworking.Utilities PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f6095ab9-4204-40dc-987a-390f76d42e41" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

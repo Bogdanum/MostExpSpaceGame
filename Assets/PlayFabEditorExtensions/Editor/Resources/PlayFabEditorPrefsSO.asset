@@ -17,7 +17,7 @@ MonoBehaviour:
   SelectedStudio: 
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
-  LocalCloudScriptPath: 
+  LocalCloudScriptPath: /Users/bogdan/Bogdanum Games/SpaceSurvival3D/Assets/PlayFabEditorExtensions/Editor/Resources/.CloudScript.js
   PanelIsShown: 1
-  curMainMenuIdx: 0
+  curMainMenuIdx: 2
   curSubMenuIdx: 0

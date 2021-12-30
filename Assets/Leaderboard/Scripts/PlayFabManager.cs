@@ -75,9 +75,20 @@ public class PlayFabManager : MonoBehaviour
         private Dictionary<string, Sprite> flagsStorage;
         [SerializeField] private Sprite[] flags;
     #endregion
+    [SerializeField] private GameController gameController;
     public static PlayFabManager instance;
 
-    private void Awake() { instance = this; }
+    private void Awake() {
+        instance = this;
+        gameController.OnBestScoreUpdate += SendLeaderboard;
+        gameController.OnDestrAsterUpdate += SendAsterLeaderboard;
+    }
+
+    private void OnDestroy()
+    {
+        gameController.OnBestScoreUpdate -= SendLeaderboard;
+        gameController.OnDestrAsterUpdate -= SendAsterLeaderboard;
+    }
 
     void Start()
     {
@@ -151,9 +162,9 @@ public class PlayFabManager : MonoBehaviour
             Debug.Log("Error while logging in/creating account!");
             Debug.Log(error.GenerateErrorReport());
             errorWindowText.SetActive(true);
-            if (PlayerPrefs.GetString("PlayerName") != null)
+            if (PlayerData.PlayerName != string.Empty)
             {
-                nameMenu.text = PlayerPrefs.GetString("PlayerName");
+                nameMenu.text = PlayerData.PlayerName;
             
             }
             else
@@ -187,7 +198,8 @@ public class PlayFabManager : MonoBehaviour
             nameMenu.text = result.DisplayName;
             if (result.DisplayName == inputField.text)
             inputName.SetActive(false);
-            PlayerPrefs.SetString("PlayerName", result.DisplayName);
+            PlayerData.SavePlayerName(result.DisplayName);
+            PlayerData.Refresh();
         }
 
     #endregion USER NAME
@@ -505,13 +517,13 @@ public class PlayFabManager : MonoBehaviour
             var request = new UpdatePlayerStatisticsRequest
             {
                 Statistics = new List<StatisticUpdate>
-                            {
-                                new StatisticUpdate
-                                {
-                                    StatisticName = ScoreLBname,
-                                    Value = score
-                                }
-                            }
+                {
+                    new StatisticUpdate
+                    {
+                        StatisticName = ScoreLBname,
+                        Value = score
+                    }
+                }
             };
             PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnError);
         }
@@ -526,13 +538,13 @@ public class PlayFabManager : MonoBehaviour
             var request = new UpdatePlayerStatisticsRequest
             {
                 Statistics = new List<StatisticUpdate>
-                    {
-                        new StatisticUpdate
-                        {
-                            StatisticName = AsterLBname,
-                            Value = score
-                        }
-                    }
+                {
+                   new StatisticUpdate
+                   {
+                       StatisticName = AsterLBname,
+                       Value = score
+                   }
+                }
             };
             PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardAsterUpdate, OnError);
         }
@@ -572,9 +584,8 @@ public class PlayFabManager : MonoBehaviour
         result => {
             foreach (var player in result.Leaderboard)
             {
-                //StartCoroutine(AddAvatarToDictionary(player.PlayFabId));
                 AddAvatarToDictionary(player.PlayFabId);
-                StartCoroutine(AddCountryToDictionary(player.PlayFabId));
+                AddCountryToDictionary(player.PlayFabId);
             }
             ControlBlockPanel.SetActive(false);
         },
@@ -583,7 +594,6 @@ public class PlayFabManager : MonoBehaviour
 
     private void AddAvatarToDictionary(string playfabID)
     {
-       // bool trigger = false;
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
         {
             PlayFabId = playfabID,
@@ -594,16 +604,13 @@ public class PlayFabManager : MonoBehaviour
             if (result.Data != null && result.Data.ContainsKey("StatusID"))
             {
                 avatarStorage.Add(playfabID, int.Parse(result.Data["StatusID"].Value));
-                //trigger = true;
             }
             else
             {
                 avatarStorage.Add(playfabID, 0);
-                //trigger = true;
             }
         },
-        error => { Debug.LogError("Ошибка добавнения аватара в коллекцию -------- PlayFabID: " + playfabID); });
-//        yield return trigger == true;
+        error => { Debug.Log("Ошибка добавнения аватара в коллекцию -------- PlayFabID: " + playfabID); });
     }
 
     void GetUserAvatarID(string PlayfabID)
@@ -623,9 +630,8 @@ public class PlayFabManager : MonoBehaviour
         error => { });
     }
 
-    private IEnumerator AddCountryToDictionary(string PlayFabID)
+    private void AddCountryToDictionary(string PlayFabID)
     {
-        bool trigger = false;
         PlayFabClientAPI.GetUserData(new GetUserDataRequest()
         {
             PlayFabId = PlayFabID,
@@ -685,10 +691,8 @@ public class PlayFabManager : MonoBehaviour
                     }
                     flagsStorage.Add(PlayFabID, flags[CountryIndex]);
                 }
-                trigger = true; 
         },
-        error => { });
-        yield return trigger == true;
+        error => { Debug.Log("Ошибка добавнения флага в коллекцию -------- PlayFabID: " + PlayFabID); });
     }
 
     private void CountrySender(string CountryCode) 
@@ -726,10 +730,10 @@ public class PlayFabManager : MonoBehaviour
             {
                 if (item.PlayFabId == loggedInPlayfabId)
                 {
-                    PlayerPrefs.SetInt(BestScoreKey, item.StatValue);
-                    GameController.instance.bestscore = PlayerPrefs.GetInt(BestScoreKey);
+                    PlayerData.SaveBestScore(item.StatValue);
+                    PlayerData.Refresh();
                     position.text = (item.Position + 1).ToString();
-            }
+                }
             }
         }
         void GetFuckingBestAster()
@@ -751,8 +755,9 @@ public class PlayFabManager : MonoBehaviour
             {
                 if (item.PlayFabId == loggedInPlayfabId)
                 {
-                    PlayerPrefs.SetInt(BestScoreKey, item.StatValue);
-                    GameController.instance.destrAster = PlayerPrefs.GetInt(BestScoreKey);
+                    PlayerData.SaveDestrAsterCount(item.StatValue);
+                    PlayerData.Refresh();
+                    GameController.DestroyedAsteroids = PlayerData.DestrAster;
                 }
             }
         }

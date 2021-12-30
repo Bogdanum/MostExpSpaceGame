@@ -1,22 +1,24 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Settings : MonoBehaviour
 {
-    public GameObject settings;
-
-    public AudioSource Fx;
-    public AudioClip clickFx;
+    [SerializeField] private AudioSource Fx;
+    [SerializeField] private AudioClip clickFx;
+    [SerializeField] private SettingsUI settingsUI;
 
     public static bool GameIsPaused = false;
 
-   public void Resume()
+    public SettingsUI GetSettingsUI() {
+        return settingsUI;
+    }
+
+    public void Resume()
     {
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
-   public void Pause()
+    public void Pause()
     {
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -29,8 +31,16 @@ public class Settings : MonoBehaviour
 
     public void GoHome(){
         Time.timeScale = 1f;
-        settings.SetActive(false);
-        SceneManager.LoadScene("SampleScene");
+        HideSettingsPanel();
+        GameController.ReloadScene(0);
         TouchRestart.hideMenu = 0;
+    }
+
+    public void ShowSettingsPanel() {
+        settingsUI.ShowSettingsPanel();
+    }
+
+    public void HideSettingsPanel() {
+        settingsUI.HideSettingsPanel();
     }
 }

@@ -2,12 +2,14 @@
 
 public class Cam1 : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject player2;
-    public GameObject player3;
+    private Transform currentPlayerShip;
     public Transform target;
     public float smooth = 5.0f;
     public Vector3 offset = new Vector3(0, 2, -5);
+
+    public void SetCurrPlayerShip(Transform ship) {
+        currentPlayerShip = ship;
+    }
 
     void Start()
     {
@@ -16,26 +18,21 @@ public class Cam1 : MonoBehaviour
 
     void Update()
     {
-      transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth);       
+        transform.position = Vector3.Lerp(transform.position, target.position + offset, Time.deltaTime * smooth);       
     }
 
     void LateUpdate()
     {
-        if (player.activeSelf)
-            transform.position = player.transform.position + offset;
-        if (player2.activeSelf)
-            transform.position = player2.transform.position + offset;
-        if (player3.activeSelf)
-            transform.position = player3.transform.position + offset;
+        if (NullPlayerShip()) return;
+
+        transform.position = currentPlayerShip.position + offset;
     }
 
     private void RefreshOffset()
     {
-        if (player.activeSelf)
-           offset = transform.position - player.transform.position;
-        if (player2.activeSelf)
-           offset = transform.position - player2.transform.position;
-        if (player3.activeSelf)
-            offset = transform.position - player3.transform.position;
+        if (NullPlayerShip()) return;
+        offset = transform.position - currentPlayerShip.position;
     }
+
+    private bool NullPlayerShip() => currentPlayerShip == null;
 }

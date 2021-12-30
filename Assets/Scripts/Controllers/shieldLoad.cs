@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class shieldLoad : MonoBehaviour
@@ -9,7 +7,7 @@ public class shieldLoad : MonoBehaviour
     public float cooldown;
     [HideInInspector] public bool isCooldown;
 
-    private void Start()
+    private void OnEnable()
     {
         isCooldown = true;
         circle = GetComponent<Image>();

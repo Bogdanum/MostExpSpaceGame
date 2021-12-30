@@ -2,34 +2,29 @@
 
 public class AsteroidEmmiter : MonoBehaviour
 {
-    [Header ("Game objects")]
-    public GameObject Asteroid;
-    public GameObject RelBonus;
-    public GameObject DeathSphere;
-    public GameObject emmiter;
-    [Header("Asteroids")]
-    public float minReleaseDelay;
-    public float maxReleaseDelay;
+    [SerializeField] private GameObject Asteroid,
+                                        RelBonus,
+                                        DeathSphere;
+    [SerializeField, Range(1, 50)]
+    private float minReleaseDelay,
+                  maxReleaseDelay,
+                  minDelayBonus,
+                  maxDelayBonus,
+                  minDelayDeath,
+                  maxDelayDeath;
     float nextLaunchTime;
-    [Header("Bonus")]
-    public float minDelayBonus;
-    public float maxDelayBonus;
     float nextLaunchTimeBonus;
-    [Header("Death Sphere")]
-    public float minDelayDeath;
-    public float maxDelayDeath;
     float nextLaunchTimeDeath;
-
     float difficulty = 1.0f;
 
     private void Start()
     {
-        difficulty = GetDifficulty();
+        difficulty = GetDifficultyCoeff();
     }
 
-    private float GetDifficulty()
+    private float GetDifficultyCoeff()
     {
-         switch (GameController.instance.difficulty)
+         switch (GameController.Difficulty)
         {
             case 0:  return .8f;
             case 1:  return 1.0f;
@@ -40,12 +35,11 @@ public class AsteroidEmmiter : MonoBehaviour
 
     void Update()
     {
-        if (GameController.instance.isStarted == false)
+        if (!GameController.IsStarted)
         {
             return;
         }
 
-        CalculateSphereDelay();
         ReleaseAsteroid();
 
         ReleaseBonusSphere();
@@ -65,11 +59,7 @@ public class AsteroidEmmiter : MonoBehaviour
                 difficulty += 0.007f;
             }
 
-            float PosY = 0;
-            float PosZ = transform.position.z;
-            float PosX = GetRandomPosX();
-
-            Instantiate(Asteroid, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
+            SpawnSomethingRandomPos(Asteroid);
 
             nextLaunchTime = Time.time + Random.Range(minReleaseDelay, maxReleaseDelay) / difficulty;
         }
@@ -79,15 +69,12 @@ public class AsteroidEmmiter : MonoBehaviour
     {
         if (Time.time > nextLaunchTimeBonus)
         {
-            if (GameController.instance.score < 4000)
+            if (GameController.Score < 4000)
             {
                 return;
             }
-            float PosY = 0;
-            float PosZ = transform.position.z;
-            float PosX = GetRandomPosX();
 
-            Instantiate(RelBonus, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
+            SpawnSomethingRandomPos(RelBonus);
             nextLaunchTimeBonus = Time.time + Random.Range(minDelayBonus, maxDelayBonus);
         }
     }
@@ -96,24 +83,23 @@ public class AsteroidEmmiter : MonoBehaviour
     {
         if (Time.time > nextLaunchTimeDeath)
         {
-            if (GameController.instance.score < 4000)
+            if (GameController.Score < 4000)
             {
                 return;
             }
-            float PosY = 0;
-            float PosZ = transform.position.z;
 
-            if (GameController.instance.difficulty == 1)
-            {
-                Instantiate(DeathSphere, new Vector3(GetRandomPosX(), PosY, PosZ), Quaternion.identity);
-            }
-            if (GameController.instance.difficulty == 2)
-            {
-                Instantiate(DeathSphere, new Vector3(GetRandomPosX(), PosY, PosZ), Quaternion.identity);
-                Instantiate(DeathSphere, new Vector3(GetRandomPosX(), PosY, PosZ), Quaternion.identity);
-            }
+            for (int i = 0; i < GameController.Difficulty; i++)
+                SpawnSomethingRandomPos(DeathSphere);
+        
             nextLaunchTimeDeath = Time.time + Random.Range(minDelayDeath, maxDelayDeath);
         }
+    }
+
+    private void SpawnSomethingRandomPos(GameObject go) {
+        float PosX = GetRandomPosX();
+        float PosY = 0;
+        float PosZ = transform.position.z;
+        Instantiate(go, new Vector3(PosX, PosY, PosZ), Quaternion.identity);
     }
 
     private float GetRandomPosX()
@@ -121,23 +107,4 @@ public class AsteroidEmmiter : MonoBehaviour
         return Random.Range(-transform.localScale.x / 2, transform.localScale.x / 2);
     }
 
-    private void CalculateSphereDelay()
-    {
-        if (GameController.instance.score >= 10000 && GameController.instance.score < 100000)
-        {
-            IncrementDelay();
-        }
-        if (GameController.instance.score >= 100000)
-        {
-            IncrementDelay();
-        }
-    }
-
-    private void IncrementDelay()
-    {
-        minDelayBonus *= 2;
-        maxDelayBonus *= 2;
-        minDelayDeath *= 1.3f;
-        maxDelayDeath += 10;
-    }
 }
